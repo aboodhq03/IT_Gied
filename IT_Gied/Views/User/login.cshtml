@@ -1,0 +1,38 @@
+﻿@model loginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<section class="bg-area">
+    <div class="bg-overlay"></div>
+
+    <div class="container h-100 d-flex justify-content-end align-items-center">
+        <div class="card signin-card shadow-lg border-0 p-4">
+
+            <h4 class="fw-bold mb-4 text-center">Sign in with email</h4>
+
+            <form asp-action="login" asp-controller="User" method="post">
+                @Html.AntiForgeryToken()
+
+                <input asp-for="Email" type="email" class="form-control mb-3" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <input asp-for="Password" type="password" class="form-control mb-4" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <button class="btn btn-primary w-100">Continue</button>
+
+                <p class="text-center text-muted mt-3 mb-0">
+                    Don’t have an account?
+                    <a asp-action="Regester" asp-controller="User">Sign up</a>
+                </p>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

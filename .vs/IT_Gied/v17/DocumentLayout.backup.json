@@ -1,0 +1,509 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\IT_Gied\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\wwwroot\\html\\introweb.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\wwwroot\\html\\introweb.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\wwwroot\\css\\intro.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\wwwroot\\css\\intro.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\wwwroot\\css\\courses-roadmap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\wwwroot\\css\\courses-roadmap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\views\\de\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\views\\de\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\controllers\\decontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\controllers\\decontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\wwwroot\\js\\courses-roadmap.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\wwwroot\\js\\courses-roadmap.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\wwwroot\\css\\aboutus.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\wwwroot\\css\\aboutus.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\coursenodevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\coursenodevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\courseprerequisite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\courseprerequisite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\regestermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\regestermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\courseroadmapvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\courseroadmapvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\usercourseprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\usercourseprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\models\\progressdashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\models\\progressdashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\views\\courses\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\views\\courses\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\25a48012-3087-48f6-8505-a7daa741f959.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\4b17f89c-656c-4f96-a70c-4bc30348e12c.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\d42451c6-6635-473c-8a74-b60a6c28d1e2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\06ef2da7-925a-41cc-be18-207adcec069e.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\58cda4f8-73e3-4611-81a7-a2a66466753d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Downloads\\01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\migrations\\20260105171928_addcoursecredithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\migrations\\20260105171928_addcoursecredithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|c:\\users\\user\\desktop\\it_gied\\it_gied\\migrations\\20260105174556_wwwwwwww.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D8257C5-99A0-4DEF-931A-914DB420C8BF}|IT_Gied\\IT_Gied.csproj|solutionrelative:it_gied\\migrations\\20260105174556_wwwwwwww.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "intro.css",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\intro.css",
+              "RelativeDocumentMoniker": "IT_Gied\\wwwroot\\css\\intro.css",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\intro.css",
+              "RelativeToolTip": "IT_Gied\\wwwroot\\css\\intro.css",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAiwOIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-05T18:05:40.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "introweb.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\Html\\introweb.html",
+              "RelativeDocumentMoniker": "IT_Gied\\wwwroot\\Html\\introweb.html",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\Html\\introweb.html",
+              "RelativeToolTip": "IT_Gied\\wwwroot\\Html\\introweb.html",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-05T17:29:49.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Controllers\\CoursesController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "IT_Gied\\Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:40:23.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Courses\\Index.cshtml",
+              "RelativeDocumentMoniker": "IT_Gied\\Views\\Courses\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Courses\\Index.cshtml",
+              "RelativeToolTip": "IT_Gied\\Views\\Courses\\Index.cshtml",
+              "ViewState": "AgIAABoAAAAAQDMzMzPrvysAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-04T20:51:10.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20260105174556_wwwwwwww.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Migrations\\20260105174556_wwwwwwww.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Migrations\\20260105174556_wwwwwwww.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Migrations\\20260105174556_wwwwwwww.cs",
+              "RelativeToolTip": "IT_Gied\\Migrations\\20260105174556_wwwwwwww.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T17:45:56.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\Course.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\Course.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\Course.cs",
+              "ViewState": "AgIAAAYAAABAzszMzIwjwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:00:30.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20260105171928_AddCourseCreditHours.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Migrations\\20260105171928_AddCourseCreditHours.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Migrations\\20260105171928_AddCourseCreditHours.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Migrations\\20260105171928_AddCourseCreditHours.cs",
+              "RelativeToolTip": "IT_Gied\\Migrations\\20260105171928_AddCourseCreditHours.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T17:19:28.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\de\\Index.cshtml",
+              "RelativeDocumentMoniker": "IT_Gied\\Views\\de\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\de\\Index.cshtml",
+              "RelativeToolTip": "IT_Gied\\Views\\de\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-05T16:47:40.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "courses-roadmap.css",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\courses-roadmap.css",
+              "RelativeDocumentMoniker": "IT_Gied\\wwwroot\\css\\courses-roadmap.css",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\courses-roadmap.css",
+              "RelativeToolTip": "IT_Gied\\wwwroot\\css\\courses-roadmap.css",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAgwJEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-05T15:52:24.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "courses-roadmap.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\js\\courses-roadmap.js",
+              "RelativeDocumentMoniker": "IT_Gied\\wwwroot\\js\\courses-roadmap.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\js\\courses-roadmap.js",
+              "RelativeToolTip": "IT_Gied\\wwwroot\\js\\courses-roadmap.js",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAYwKUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-05T15:56:43.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "aboutus.css",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\aboutus.css",
+              "RelativeDocumentMoniker": "IT_Gied\\wwwroot\\css\\aboutus.css",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\wwwroot\\css\\aboutus.css",
+              "RelativeToolTip": "IT_Gied\\wwwroot\\css\\aboutus.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-05T16:09:12.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "IT_Gied\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "IT_Gied\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-05T15:57:44.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegesterModel.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\RegesterModel.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\RegesterModel.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\RegesterModel.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\RegesterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T13:17:11.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "deController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\deController.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Controllers\\deController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\deController.cs",
+              "RelativeToolTip": "IT_Gied\\Controllers\\deController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T16:47:21.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CoursePrerequisite.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CoursePrerequisite.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\CoursePrerequisite.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CoursePrerequisite.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\CoursePrerequisite.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:05:11.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CourseNodeVM.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CourseNodeVM.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\CourseNodeVM.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CourseNodeVM.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\CourseNodeVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:00:40.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\AppDbContext.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T13:40:14.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CourseRoadmapVM.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CourseRoadmapVM.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\CourseRoadmapVM.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\CourseRoadmapVM.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\CourseRoadmapVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:06:24.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UserCourseProgress.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\UserCourseProgress.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\UserCourseProgress.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\UserCourseProgress.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\UserCourseProgress.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:50:21.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProgressDashboardVM.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\ProgressDashboardVM.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Models\\ProgressDashboardVM.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Models\\ProgressDashboardVM.cs",
+              "RelativeToolTip": "IT_Gied\\Models\\ProgressDashboardVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T13:55:35.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Courses\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "IT_Gied\\Views\\Courses\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Views\\Courses\\Dashboard.cshtml",
+              "RelativeToolTip": "IT_Gied\\Views\\Courses\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-05T14:06:19.441Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml",
+              "RelativeToolTip": "..\\..\\Downloads\\41b45b95-3273-4f42-b170-303cc91aa0c5.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-05T14:01:31.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "25a48012-3087-48f6-8505-a7daa741f959.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\25a48012-3087-48f6-8505-a7daa741f959.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\25a48012-3087-48f6-8505-a7daa741f959.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\25a48012-3087-48f6-8505-a7daa741f959.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\25a48012-3087-48f6-8505-a7daa741f959.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:01:23.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "4b17f89c-656c-4f96-a70c-4bc30348e12c.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\4b17f89c-656c-4f96-a70c-4bc30348e12c.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\4b17f89c-656c-4f96-a70c-4bc30348e12c.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\4b17f89c-656c-4f96-a70c-4bc30348e12c.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\4b17f89c-656c-4f96-a70c-4bc30348e12c.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:01:15.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "d42451c6-6635-473c-8a74-b60a6c28d1e2.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\d42451c6-6635-473c-8a74-b60a6c28d1e2.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\d42451c6-6635-473c-8a74-b60a6c28d1e2.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\d42451c6-6635-473c-8a74-b60a6c28d1e2.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\d42451c6-6635-473c-8a74-b60a6c28d1e2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:01:08.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\b7f4d6ab-e896-49a3-ad28-72f949d3dd3b.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:01:01.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "06ef2da7-925a-41cc-be18-207adcec069e.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\06ef2da7-925a-41cc-be18-207adcec069e.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\06ef2da7-925a-41cc-be18-207adcec069e.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\06ef2da7-925a-41cc-be18-207adcec069e.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\06ef2da7-925a-41cc-be18-207adcec069e.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:00:51.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\UserController.cs",
+              "RelativeToolTip": "IT_Gied\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:09:04.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "IT_Gied\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "IT_Gied\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:50:53.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\01ecc5c6-cdb4-45a5-97ee-878b0eb5a25e.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:48:55.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "58cda4f8-73e3-4611-81a7-a2a66466753d.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\58cda4f8-73e3-4611-81a7-a2a66466753d.cs",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\58cda4f8-73e3-4611-81a7-a2a66466753d.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\58cda4f8-73e3-4611-81a7-a2a66466753d.cs",
+              "RelativeToolTip": "..\\..\\Downloads\\58cda4f8-73e3-4611-81a7-a2a66466753d.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:48:46.092Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

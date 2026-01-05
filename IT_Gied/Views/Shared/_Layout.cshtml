@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IT_Gied</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/IT_Gied.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/css/EditProfile.css" asp-append-version="true" />
+
+</head>
+<body class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "User" &&
+               (ViewContext.RouteData.Values["action"]?.ToString() == "EditProfile" ||
+                ViewContext.RouteData.Values["action"]?.ToString() == "ChangePassword")
+               ? "auth-bg" : "")">
+
+    <header>
+<nav class="navbar navbar-expand-lg toolbar-color shadow-sm py-3">
+    <div class="container-fluid px-4">
+
+        <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">IT Guide</a>
+
+        <form class="d-flex flex-grow-1 mx-4">
+            <input class="form-control search-input w-100" type="search" placeholder="search about anythings">
+        </form>
+
+        <div class="d-flex align-items-center gap-3">
+            <a class="nav-link" asp-controller="Home" asp-action="aboutus">about us</a>
+            <a class="nav-link" asp-controller="Departments" asp-action="Index">Departments</a>
+             @if (SignInManager.IsSignedIn(User)){
+            <a class="btn btn-outline-primary btn-sm px-3" asp-action="logout" asp-controller="User" >Log out</a>
+             }
+             else{
+                 <a class="btn btn-outline-primary btn-sm px-3" asp-action="login" asp-controller="User" >Log in</a>
+            <a class="btn btn-primary btn-sm px-3" asp-controller="User" asp-action="Regester">sign up</a>
+             }
+       @if (SignInManager.IsSignedIn(User))
+{
+    var userData = await UserManager.GetUserAsync(User);
+    var email = userData?.Email ?? "";
+    var userPart = email.Contains("@") ? email.Split('@')[0] : email;
+
+    var shortName = userPart.Length >= 2
+        ? $"{userPart[0]}{userPart[^1]}"
+        : userPart;
+
+<a asp-action="EditProfile" asp-controller="User">  <span class="rounded-circle bg-dark text-white border border-2 border-light d-inline-flex align-items-center justify-content-center fw-semibold"
+      style="width:40px; height:40px;">
+    @shortName
+</span>
+</a>
+
+}
+
+
+        </div>
+
+    </div>
+</nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - IT_Gied - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

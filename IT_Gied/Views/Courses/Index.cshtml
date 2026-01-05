@@ -1,0 +1,49 @@
+﻿@model List<IT_Gied.Models.CourseNodeVM>
+
+@{
+    ViewData["Title"] = "Courses Roadmap";
+}
+
+<link rel="stylesheet" href="~/css/courses-roadmap.css" asp-append-version="true" />
+
+<div class="roadmap-wrap">
+    <div id="nodes" class="nodes">
+        <svg id="edges" class="edges"></svg>
+
+        @foreach (var c in Model)
+        {
+            var stateClass = c.IsCompleted ? "completed" : (c.IsUnlocked ? "unlocked" : "locked");
+            var unlocksCsv = string.Join(",", c.Unlocks);
+
+            <div class="node @stateClass"
+                 data-id="@c.Id"
+                 data-unlocks="@unlocksCsv">
+
+                <div class="code">@c.Code</div>
+
+                <div class="name" title="@c.Name">@c.Name</div>
+
+               @*  @if (!string.IsNullOrWhiteSpace(c.Description))
+                {
+                    <div class="desc" title="@c.Description">@c.Description</div>
+                } *@
+
+                <form asp-controller="Courses" asp-action="ToggleComplete" method="post" class="done-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="courseId" value="@c.Id" />
+
+                    <button class="btn-done" type="submit" @(c.IsUnlocked ? "" : "disabled")>
+                        @(c.IsCompleted ? "إلغاء" : "إنجاز")
+                    </button>
+                
+                    
+                </form>
+              <a class="btn-details" asp-controller="Courses" asp-action="Details" asp-route-id="@c.Id">
+    details
+</a>
+</div>
+        }
+    </div>
+</div>
+
+<script src="~/js/courses-roadmap.js" asp-append-version="true"></script>

@@ -1,0 +1,20 @@
+﻿@model IT_Gied.Models.ProgressDashboardVM
+@{
+    ViewData["Title"] = "Progress Dashboard";
+}
+
+<h2>Progress Dashboard</h2>
+
+<div style="display:grid; gap:12px; max-width:520px;">
+    <div>Total Courses: <b>@Model.TotalCourses</b></div>
+    <div>Completed: <b>@Model.CompletedCourses</b></div>
+    <div>Unlocked: <b>@Model.UnlockedCourses</b></div>
+    <div>Locked: <b>@Model.LockedCourses</b></div>
+    <div>Completion: <b>@Model.CompletionPercent%</b></div>
+
+    <div style="height:14px; background:#ddd; border-radius:999px; overflow:hidden;">
+        <div style="height:100%; width:@Model.CompletionPercent%; background:#22c55e;"></div>
+    </div>
+
+    <a class="btn btn-primary" href="/Courses/Index">Back to Roadmap</a>
+</div>

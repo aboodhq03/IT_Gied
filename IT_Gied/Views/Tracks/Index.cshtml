@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "المسارات الخارجية";
+    // إذا عندك Layout خليه، إذا لا احذف السطر التالي
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/tracks-index.css" asp-append-version="true" />
+
+<header class="hero" dir="rtl">
+    <div class="hero-content">
+        <h1>المسارات الخارجية</h1>
+        <p>
+            اختر المسار الذي تريد تعلمه. هذه الصفحة متاحة للجميع.
+            داخل كل مسار سيكون هناك متابعة للتقدم (بعد تسجيل الدخول).
+        </p>
+
+        <div class="badges">
+            <span class="badge">Public</span>
+            <span class="badge">RTL</span>
+            <span class="badge">Responsive</span>
+        </div>
+    </div>
+</header>
+
+<main class="page" dir="rtl">
+    <section class="container">
+        <div class="section-title">
+            <h2>المجالات المتاحة</h2>
+            <p>اضغط على بطاقة المسار للانتقال لصفحته</p>
+        </div>
+
+        <div class="grid">
+
+            <!-- WebDev -->
+            <a class="card" asp-controller="Tracks" asp-action="WebDev">
+                <div class="thumb" style="background-image:url('/img/tracks/web.jpg')"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>Web Development</h3>
+                        <span class="tag">Web</span>
+                    </div>
+                    <p>Front-End / Back-End / Full-Stack — خطة مرتبة وموارد.</p>
+                    <span class="go">فتح المسار</span>
+                </div>
+            </a>
+
+            <!-- AI -->
+            <a class="card" asp-controller="Tracks" asp-action="Ai">
+                <div class="thumb" style="background-image:url('/img/tracks/ai.jpg')"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>Artificial Intelligence</h3>
+                        <span class="tag">AI</span>
+                    </div>
+                    <p>Machine Learning, Deep Learning, NLP — أساسيات ومشاريع.</p>
+                    <span class="go">فتح المسار</span>
+                </div>
+            </a>
+
+            <!-- Cybersecurity -->
+            <a class="card" asp-controller="Tracks" asp-action="Cybersecurity">
+                <div class="thumb" style="background-image:url('/img/tracks/cyber.jpg')"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>Cybersecurity</h3>
+                        <span class="tag">Security</span>
+                    </div>
+                    <p>Pentesting, SOC, Network Security — مسار تدريجي.</p>
+                    <span class="go">فتح المسار</span>
+                </div>
+            </a>
+
+            <!-- Data -->
+            <a class="card" asp-controller="Tracks" asp-action="Data">
+                <div class="thumb" style="background-image:url('/img/tracks/data.jpg')"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>Data</h3>
+                        <span class="tag">Data</span>
+                    </div>
+                    <p>SQL, Analytics, Visualization — تطبيقات عملية.</p>
+                    <span class="go">فتح المسار</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="note">
+          @*   <strong>ملاحظة:</strong> إذا ضغطت على مسار ولم تكن مسجلاً، سيتم تحويلك لتسجيل الدخول (عند تفعيل Authorize لاحقاً). *@
+        </div>
+    </section>
+</main>

@@ -1,0 +1,48 @@
+@model List<IT_Gied.Models.Track>
+
+@{
+    ViewData["Title"] = "المسارات الخارجية";
+}
+
+<link rel="stylesheet" href="~/css/tracks.css" asp-append-version="true" />
+
+<header class="hero" dir="rtl">
+    <div class="hero-content">
+        <h1>المسارات الخارجية</h1>
+        <p>
+            اختر المسار الذي تريد تعلمه. هذه الصفحة متاحة للجميع.
+            داخل كل مسار ستكون متابعة للتقدم بعد تسجيل الدخول.
+        </p>
+        <div class="badges">
+            <span class="badge">Public</span>
+            <span class="badge">RTL</span>
+            <span class="badge">Responsive</span>
+        </div>
+    </div>
+</header>
+
+<main class="container" dir="rtl">
+    <div class="section-title">
+        <h2>المجالات المتاحة</h2>
+        <p>اضغط على بطاقة المسار للانتقال إلى صفحة المسار</p>
+    </div>
+
+    <div class="grid">
+        @foreach (var t in Model)
+        {
+            var action = t.Slug == "webdev" ? "WebDev" : "WebDev"; // لاحقاً: اربط كل Slug بصفحة خاصة
+
+            <a class="card" asp-controller="Tracks" asp-action="@action">
+                <div class="thumb" style="background-image:url('@(t.ImageUrl ?? "/img/tracks/web.jpg")')"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>@t.Name</h3>
+                        <span class="tag">@t.Slug</span>
+                    </div>
+                    <p>@(t.Description ?? "")</p>
+                    <span class="go">فتح المسار</span>
+                </div>
+            </a>
+        }
+    </div>
+</main>

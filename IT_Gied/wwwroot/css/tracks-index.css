@@ -1,0 +1,247 @@
+﻿:root {
+    --bg: #0b1220;
+    --text: #e8eefc;
+    --muted: rgba(232,238,252,.78);
+    --border: rgba(255,255,255,.12);
+    --panel: rgba(255,255,255,.08);
+    --panel2: rgba(255,255,255,.10);
+    --shadow: 0 14px 40px rgba(0,0,0,.35);
+    --shadow2: 0 10px 26px rgba(0,0,0,.22);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+    color: var(--text);
+    background: radial-gradient(1200px 520px at 80% 10%, rgba(255,255,255,0.10), transparent 60%), radial-gradient(900px 600px at 12% 18%, rgba(255,255,255,0.06), transparent 55%), radial-gradient(700px 420px at 30% 90%, rgba(255,255,255,0.05), transparent 60%), var(--bg);
+}
+
+.page {
+    padding-bottom: 44px;
+}
+
+/* HERO */
+.hero {
+    padding: 56px 16px 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(26px,4vw,42px);
+    letter-spacing: .2px;
+}
+
+.hero p {
+    margin: 0;
+    max-width: 780px;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.badge {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 22px 16px 0;
+}
+
+.section-title {
+    margin-bottom: 12px;
+}
+
+    .section-title h2 {
+        margin: 0 0 6px;
+        font-size: 20px;
+    }
+
+    .section-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+/* GRID */
+.grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+}
+
+@media (max-width:1100px) {
+    .grid {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+}
+
+@media (max-width:850px) {
+    .grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+}
+
+@media (max-width:560px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CARD */
+.card {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(180deg,var(--panel2),var(--panel));
+    box-shadow: var(--shadow2);
+    display: flex;
+    flex-direction: column;
+    transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease, border-color .14s ease;
+    backdrop-filter: blur(10px);
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+        border-color: rgba(255,255,255,.18);
+        opacity: .98;
+    }
+
+.thumb {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+    .thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.18) 45%, rgba(0,0,0,0) 85%);
+    }
+
+.card-body {
+    padding: 14px 14px 16px;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+    .card-head h3 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.35;
+    }
+
+.tag {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.card-body p {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.go {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.06);
+    width: fit-content;
+}
+
+    .go::before {
+        content: "←";
+        opacity: .85;
+    }
+
+.note {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    line-height: 1.8;
+}
+.edges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.edge {
+    stroke: rgba(255,255,255,0.35);
+    stroke-width: 2;
+}
+
+    .edge.done {
+        stroke: rgba(120,255,180,0.55);
+    }
+
+    .edge.locked {
+        stroke: rgba(255,255,255,0.15);
+        stroke-dasharray: 6 6;
+    }
+/* Fix washed-out background for roadmap page */
+.roadmap-wrap {
+    background: transparent;
+}
+
+body {
+    background: #0b1220; /* أو أي لون مناسب */
+}

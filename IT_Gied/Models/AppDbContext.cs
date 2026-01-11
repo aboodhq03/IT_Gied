@@ -4,19 +4,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_Gied.Models
 {
-    public class AppDbContext : IdentityDbContext<IdentityUser>
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Course> Courses { get; set; }
         public DbSet<CoursePrerequisite> CoursePrerequisites { get; set; }
         public DbSet<UserCourseProgress> UserCourseProgresses { get; set; }
+        public DbSet<Track> Tracks { get; set; }
+        public DbSet<TrackNode> TrackNodes { get; set; }
+        public DbSet<TrackLink> TrackLinks { get; set; }
+        public DbSet<UserTrackProgress> UserTrackProgresses { get; set; }
+
+
+
+
+        public DbSet<UserGpa> UserGpas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // CoursePrerequisite - منع cascade paths
             modelBuilder.Entity<CoursePrerequisite>(entity =>
             {
                 entity.Property(x => x.RelationType)
@@ -37,7 +45,6 @@ namespace IT_Gied.Models
                       .IsUnique();
             });
 
-            // UserCourseProgress
             modelBuilder.Entity<UserCourseProgress>(entity =>
             {
                 entity.Property(x => x.UserId).IsRequired();
@@ -50,10 +57,16 @@ namespace IT_Gied.Models
                 entity.HasOne(x => x.User)
                       .WithMany()
                       .HasForeignKey(x => x.UserId)
-                      .OnDelete(DeleteBehavior.Cascade); // إذا انحذف المستخدم تنحذف سجلات تقدمه
+                      .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasIndex(x => new { x.UserId, x.CourseId })
                       .IsUnique();
+            });
+
+         
+            modelBuilder.Entity<UserGpa>(entity =>
+            {
+                entity.HasIndex(x => x.UserId).IsUnique();
             });
         }
     }

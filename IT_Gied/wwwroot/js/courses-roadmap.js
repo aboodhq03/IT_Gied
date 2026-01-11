@@ -26,13 +26,28 @@
         edgesSvg.innerHTML = "";
     }
 
-    function makeLine(x1, y1, x2, y2, cssClass) {
+    // ✅ FIX: accept "edge edge-prereq active" and split into tokens safely
+    function makeLine(x1, y1, x2, y2, cssClass = "") {
         const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
         line.setAttribute("x1", x1);
         line.setAttribute("y1", y1);
         line.setAttribute("x2", x2);
         line.setAttribute("y2", y2);
-        line.setAttribute("class", cssClass);
+
+        // Use your CSS naming (.edge, .edge-prereq, .edge-concurrent, .active)
+        // Always add base edge class
+        line.classList.add("edge");
+
+        // Add any additional classes (split by whitespace)
+        if (cssClass && typeof cssClass === "string") {
+            const tokens = cssClass.trim().split(/\s+/).filter(Boolean);
+            // Avoid re-adding "edge" if present
+            for (const t of tokens) {
+                if (t !== "edge") line.classList.add(t);
+            }
+        }
+
         return line;
     }
 
@@ -105,13 +120,13 @@
             const a = getNodeCenter(fromEl);
             const b = getNodeCenter(toEl);
 
-            const baseClass = (l.type === "Concurrent")
-                ? "edge edge-concurrent"
-                : "edge edge-prereq";
+            // ✅ keep only additional classes here (makeLine always adds "edge")
+            const typeClass = (l.type === "Concurrent") ? "edge-concurrent" : "edge-prereq";
 
-            // Active if prereq done => edge lights up
+            // Active if one side completed (you can change this logic if you want)
             const isActive = completedSet.has(l.from) || completedSet.has(l.to);
-            const cssClass = isActive ? `${baseClass} active` : baseClass;
+
+            const cssClass = isActive ? `${typeClass} active` : typeClass;
 
             edgesSvg.appendChild(makeLine(a.x, a.y, b.x, b.y, cssClass));
         }
@@ -138,7 +153,6 @@
         const btn = e.target.closest(".btn-done");
         if (!btn) return;
 
-        // prevent form submit (we use ajax)
         e.preventDefault();
 
         const nodeEl = btn.closest(".node");
@@ -149,7 +163,6 @@
             btn.disabled = true;
             const data = await toggleCompleteAjax(courseId);
 
-            // update completed class quickly
             if (data.isCompleted) {
                 nodeEl.classList.add("completed");
                 nodeEl.classList.remove("locked", "unlocked");
@@ -165,13 +178,11 @@
         } catch (err) {
             alert(err.message || "Error");
         } finally {
-            // re-evaluate lock
             const isLocked = nodeEl.classList.contains("locked");
             btn.disabled = isLocked;
         }
     });
 
-    // re-draw on resize
     window.addEventListener("resize", () => drawEdges());
 
     (async function init() {

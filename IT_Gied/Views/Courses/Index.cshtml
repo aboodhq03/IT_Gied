@@ -6,6 +6,34 @@
 
 <link rel="stylesheet" href="~/css/courses-roadmap.css" asp-append-version="true" />
 
+<div class="tree-legend" dir="rtl" lang="ar">
+  <span class="legend-item">
+    <span class="legend-line legend-line--dashed" aria-hidden="true"></span>
+    <span class="legend-label">متزامنة</span>
+  </span>
+
+  <span class="legend-item">
+    <span class="legend-line legend-line--solid" aria-hidden="true"></span>
+    <span class="legend-label">سابق دراسة</span>
+  </span>
+
+  <span class="legend-item">
+    <span class="legend-dot legend-dot--gray" aria-hidden="true"></span>
+    <span class="legend-label">مغلقة</span>
+  </span>
+
+  <span class="legend-item">
+    <span class="legend-dot legend-dot--blue" aria-hidden="true"></span>
+    <span class="legend-label">متاحة</span>
+  </span>
+
+  <span class="legend-item">
+    <span class="legend-dot legend-dot--green" aria-hidden="true"></span>
+    <span class="legend-label">منجزة</span>
+  </span>
+</div>
+
+
 <div class="roadmap-wrap">
     <div id="nodes" class="nodes">
         <svg id="edges" class="edges"></svg>
@@ -38,7 +66,7 @@
                 
                     
                 </form>
-              <a class="btn-details" asp-controller="Courses" asp-action="Details" asp-route-id="@c.Id">
+              <a class="btn btn-secondary btn-sm" asp-controller="Courses" asp-action="Details" asp-route-id="@c.Id">
     details
 </a>
 </div>

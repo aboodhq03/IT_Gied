@@ -1,0 +1,176 @@
+﻿<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML من الصفر إلى الاحتراف</title>
+    <link href="../css/web-html.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="wrap">
+
+        <section class="hero">
+            <h1>HTML من الصفر إلى الاحتراف</h1>
+            <p class="muted">
+                صفحة تدريبية كاملة: مسار تعلم مرتب، فيديوهات ومراجع رسمية، وتمارين + كويزات تفاعلية لتقييم فهمك.
+            </p>
+
+            <nav class="nav">
+                <a class="btn primary" href="#path">المسار</a>
+                <a class="btn primary" href="#videos">فيديوهات</a>
+                <a class="btn primary" href="#refs">مراجع</a>
+                <a class="btn success" href="#quizzes">كويزات</a>
+            </nav>
+        </section>
+
+        <div class="sep"></div>
+
+        <section id="path" class="grid cols-3">
+            <div class="card">
+                <div class="badge">Beginner — الانطلاقة</div>
+                <h2>1) أساسيات HTML</h2>
+                <ul>
+                    <li>هيكل الصفحة: <code class="inline">&lt;!doctype html&gt;</code> و <code class="inline">&lt;head&gt;</code> و <code class="inline">&lt;body&gt;</code></li>
+                    <li>العناصر الأساسية: headings, paragraphs, links, images</li>
+                    <li>القوائم والجداول (Basics)</li>
+                    <li>المسارات: Relative vs Absolute</li>
+                </ul>
+                <div class="sep"></div>
+                <p class="muted"><strong>تمرين:</strong> أنشئ صفحة CV بسيطة فيها صورة وروابط وقائمة مهارات.</p>
+            </div>
+
+            <div class="card">
+                <div class="badge">Intermediate — بناء صفحات سليمة</div>
+                <h2>2) HTML الدلالي + Forms</h2>
+                <ul>
+                    <li>Semantic: <code class="inline">header</code>, <code class="inline">nav</code>, <code class="inline">main</code>, <code class="inline">section</code>, <code class="inline">article</code>, <code class="inline">footer</code></li>
+                    <li>Forms: input types, labels, validation attributes</li>
+                    <li>Media: audio/video + iframe</li>
+                    <li>SEO basics: title, meta description</li>
+                </ul>
+                <div class="sep"></div>
+                <p class="muted"><strong>تمرين:</strong> صفحة تسجيل (Register) مع labels والتحقق (required, pattern, minlength).</p>
+            </div>
+
+            <div class="card">
+                <div class="badge">Advanced — احتراف</div>
+                <h2>3) Accessibility + Best Practices</h2>
+                <ul>
+                    <li>Accessibility: alt, labels, tabindex</li>
+                    <li>ARIA basics: متى تستخدمها ومتى تتجنبها</li>
+                    <li>Performance: صور مناسبة + lazy loading</li>
+                    <li>Clean markup: تجنب div soup واعتمد الدلالات</li>
+                </ul>
+                <div class="sep"></div>
+                <p class="muted"><strong>تمرين:</strong> حوّل صفحة غير دلالية إلى Semantic مع تحسين الوصول.</p>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <section id="videos" class="grid cols-2">
+            <div class="card">
+                <h2>فيديوهات موصى بها</h2>
+                <ul>
+                    <li>
+                        freeCodeCamp (HTML Full Course)
+                        <a class="btn primary" target="_blank" rel="noopener noreferrer"
+                           href="https://www.youtube.com/results?search_query=freecodecamp+html+full+course">فتح</a>
+                    </li>
+                    <li>
+                        Traversy Media (HTML Crash Course)
+                        <a class="btn primary" target="_blank" rel="noopener noreferrer"
+                           href="https://www.youtube.com/results?search_query=traversy+media+html+crash+course">فتح</a>
+                    </li>
+                    <li>
+                        Kevin Powell (HTML + Accessibility)
+                        <a class="btn primary" target="_blank" rel="noopener noreferrer"
+                           href="https://www.youtube.com/results?search_query=kevin+powell+html+accessibility">فتح</a>
+                    </li>
+                </ul>
+                <p class="hint">وضعت روابط بحث لتختار أحدث نسخة بسهولة.</p>
+            </div>
+
+            <div class="card">
+                <h2>خطة تطبيق (مشاريع صغيرة)</h2>
+                <ol>
+                    <li><strong>Landing Page:</strong> هيدر + أقسام + CTA + فوتر.</li>
+                    <li><strong>Blog Layout:</strong> article + aside + pagination.</li>
+                    <li><strong>Form Page:</strong> تسجيل + HTML validation.</li>
+                    <li><strong>Portfolio:</strong> مشاريع + روابط + أقسام دلالية.</li>
+                </ol>
+                <div class="sep"></div>
+                <p class="muted">
+                    قاعدة ذهبية: قبل CSS، تأكد أن الـ HTML وحده منطقي ومقروء (Semantic).
+                </p>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <section id="refs" class="grid cols-2">
+            <div class="card">
+                <h2>مراجع رسمية (توثيق/“ورقية”)</h2>
+                <ul>
+                    <li>
+                        MDN Web Docs — HTML
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/HTML">فتح</a>
+                    </li>
+                    <li>
+                        WHATWG HTML Living Standard
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://html.spec.whatwg.org/">فتح</a>
+                    </li>
+                    <li>
+                        W3C (Standards & Recommendations)
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/">فتح</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>مراجع تدريبية (مبسطة)</h2>
+                <ul>
+                    <li>
+                        W3Schools HTML
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.w3schools.com/html/">فتح</a>
+                    </li>
+                    <li>
+                        freeCodeCamp — Responsive Web Design
+                        <a class="btn" target="_blank" rel="noopener noreferrer"
+                           href="https://www.freecodecamp.org/learn/2022/responsive-web-design/">فتح</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <section id="quizzes" class="card">
+            <div class="quiz-top">
+                <div>
+                    <h2 style="margin:0;">كويز HTML (عشوائي)</h2>
+                    <p class="muted" style="margin:6px 0 0;">كل مرة تفتح الصفحة ستحصل على أسئلة مختلفة.</p>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn" type="button" id="newQuizBtn">كويز جديد</button>
+                    <button class="btn success" type="button" id="gradeBtn">تصحيح</button>
+                    <button class="btn" type="button" id="resetBtn">إعادة ضبط</button>
+                </div>
+            </div>
+
+            <div class="sep"></div>
+
+            <div id="quizArea"></div>
+
+            <div class="result" id="r-all" hidden></div>
+        </section>
+
+
+    </div>
+    <script src="../js/questions.js" defer></script>
+    <script src="../js/app.js" defer></script>
+
+    <script src="../js/web-html.js"></script>
+</body>
+</html>

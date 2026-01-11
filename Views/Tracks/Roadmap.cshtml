@@ -1,0 +1,43 @@
+@model List<IT_Gied.Models.TrackNodeVM>
+
+@{
+    ViewData["Title"] = ViewBag.TrackName ?? "Track Roadmap";
+    var slug = (string)(ViewBag.TrackSlug ?? "webdev");
+}
+
+<link rel="stylesheet" href="~/css/courses-roadmap.css" asp-append-version="true" />
+
+<div class="roadmap-wrap" data-track-slug="@slug">
+    <div id="nodes" class="nodes">
+        <svg id="edges" class="edges"></svg>
+
+        @foreach (var u in Model)
+        {
+            var stateClass = u.IsCompleted ? "completed" : (u.IsUnlocked ? "unlocked" : "locked");
+            var unlocksCsv = string.Join(",", u.Unlocks);
+
+            <div class="node @stateClass"
+                 data-id="@u.Id"
+                 data-unlocks="@unlocksCsv">
+
+                <div class="code">@u.Code</div>
+                <div class="name" title="@u.Name">@u.Name</div>
+
+                <form asp-controller="Tracks" asp-action="ToggleComplete" method="post" class="done-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="unitId" value="@u.Id" />
+                    <input type="hidden" name="slug" value="@slug" />
+
+                    <button class="btn-done" type="submit" @(u.IsUnlocked ? "" : "disabled")>
+                        @(u.IsCompleted ? "إلغاء" : "إنجاز")
+                    </button>
+                </form>
+
+                <a class="btn btn-secondary btn-sm"
+                   asp-controller="Tracks" asp-action="UnitDetails" asp-route-id="@u.Id">details</a>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/js/track-roadmap.js" asp-append-version="true"></script>

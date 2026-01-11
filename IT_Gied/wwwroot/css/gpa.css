@@ -1,0 +1,96 @@
+﻿/* ===== GPA Page Styles ===== */
+.msg-success {
+    padding: 10px;
+    border: 1px solid #22c55e;
+    background: #dcfce7;
+    width: max-content;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.saved-box {
+    margin-bottom: 10px;
+}
+
+.gpa-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+}
+
+    .gpa-table th,
+    .gpa-table td {
+        border: 1px solid #e5e7eb;
+        padding: 8px;
+    }
+
+    .gpa-table input {
+        width: 100%;
+        padding: 6px 8px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    .gpa-table .credits {
+        width: 90px;
+    }
+
+    .gpa-table .mark {
+        width: 110px;
+    }
+
+.actions {
+    margin-top: 10px;
+    max-width: 900px;
+}
+
+    .actions button {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        background: #f8fafc;
+        cursor: pointer;
+    }
+
+        .actions button:hover {
+            background: #eef2f7;
+        }
+
+.mt {
+    margin-top: 18px;
+}
+
+.prev-wrap {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 900px;
+}
+
+    .prev-wrap input {
+        width: 220px;
+        padding: 8px 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        outline: none;
+    }
+
+.sep {
+    margin: 18px 0;
+    max-width: 900px;
+}
+
+.results {
+    max-width: 900px;
+}
+
+    .results .big {
+        font-size: 18px;
+        margin-top: 8px;
+    }
+
+.gpa-table input.invalid {
+    border-color: #ef4444;
+    background: #fef2f2;
+}

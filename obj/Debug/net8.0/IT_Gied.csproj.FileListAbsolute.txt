@@ -1,0 +1,10 @@
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.AssemblyInfo.cs
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.RazorAssemblyInfo.cache
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.RazorAssemblyInfo.cs
+C:\Users\USER\Desktop\IT_Gied\obj\Debug\net8.0\IT_Gied.sourcelink.json

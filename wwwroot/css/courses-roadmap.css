@@ -1,0 +1,232 @@
+﻿/* ===============================
+   SOFT BLUE LIGHT THEME (CIRCLES)
+   =============================== */
+
+/* ===== Background (soft blue, clean) ===== */
+html, body {
+    min-height: 100%;
+    margin: 0;
+    background: radial-gradient(900px 700px at 20% 15%, rgba(56,189,248,.18), transparent 65%), radial-gradient(900px 700px at 80% 25%, rgba(99,102,241,.14), transparent 65%), radial-gradient(900px 700px at 50% 85%, rgba(34,211,238,.10), transparent 65%), linear-gradient(180deg, #ffffff 0%, #eef6ff 55%, #e6f1ff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    background: transparent;
+}
+
+/* ===== Wrapper ===== */
+.roadmap-wrap {
+    padding: 28px 16px;
+    background: transparent !important;
+}
+
+/* ===== Nodes grid (4 per row) ===== */
+.nodes {
+    position: relative;
+    width: min(1200px, 96vw);
+    margin: 0 auto;
+    padding: 34px 16px 120px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 52px 56px;
+    background: transparent !important;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .nodes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 780px) {
+    .nodes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* prevent overlays */
+.nodes::before, .nodes::after,
+.roadmap-wrap::before, .roadmap-wrap::after {
+    content: none !important;
+}
+
+/* ===== SVG edges layer ===== */
+.edges {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* =========================
+   NODE (CIRCLE - RESTORED)
+   ========================= */
+.node {
+    position: relative;
+    z-index: 2;
+    width: 160px;
+    height: 160px;
+    border-radius: 999px; /* ✅ رجعت دائرة */
+    /* Glass light */
+    background: rgba(255,255,255,.58);
+    border: 4px solid rgba(2,132,199,.25);
+    box-shadow: 0 18px 45px rgba(2, 6, 23, .10), inset 0 1px 0 rgba(255,255,255,.65);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 12px 12px;
+    transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+    .node:hover {
+        transform: translateY(-2px);
+        border-color: rgba(2,132,199,.45);
+        background: rgba(255,255,255,.70);
+        box-shadow: 0 22px 60px rgba(2, 6, 23, .14);
+    }
+
+    /* ===== code pill ===== */
+    .node .code {
+        position: absolute;
+        top: -14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15,23,42,.88);
+        border: 1px solid rgba(255,255,255,.20);
+        font-size: 12px;
+        font-weight: 900;
+        color: #f8fafc;
+    }
+
+    /* ===== name ===== */
+    .node .name {
+        margin-top: 8px;
+        color: #0f172a;
+        font-weight: 900;
+        font-size: 13px;
+        line-height: 1.25;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    /* ===== desc ===== */
+    .node .desc {
+        margin-top: 6px;
+        font-size: 11px;
+        line-height: 1.25;
+        opacity: .85;
+        padding: 0 8px;
+        color: rgba(15,23,42,.85);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    /* ===== form reset ===== */
+    .node .done-form {
+        margin-top: 10px;
+        padding: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* ===== button ===== */
+    .node .btn-done {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: auto !important;
+        min-width: 78px;
+        padding: 7px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(15,23,42,.18);
+        background: rgba(255,255,255,.70);
+        color: #0f172a;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 900;
+        white-space: nowrap;
+        transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+        .node .btn-done:hover {
+            transform: translateY(-1px);
+            background: rgba(255,255,255,.90);
+            border-color: rgba(2,132,199,.35);
+        }
+
+        .node .btn-done:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+
+    /* ===== states ===== */
+    .node.locked {
+        opacity: .45;
+        filter: grayscale(.55);
+        border-color: rgba(148,163,184,.35);
+    }
+
+    .node.unlocked {
+        border-color: rgba(14,165,233,.55); /* sky */
+        background: rgba(255,255,255,.62);
+    }
+
+    .node.completed {
+        border-color: rgba(34,197,94,.55); /* green soft */
+        background: rgba(236,253,245,.70);
+        box-shadow: 0 18px 55px rgba(34,197,94,.10);
+    }
+
+/* =========================
+   EDGES (NEW - CLEAN)
+   ========================= */
+.edge {
+    stroke-width: 3.2;
+    opacity: .55;
+    stroke-linecap: round;
+    transition: opacity .15s ease, stroke-width .15s ease, stroke .15s ease, filter .15s ease;
+    filter: drop-shadow(0 0 4px rgba(2, 6, 23, .12));
+}
+
+/* prereq = soft navy */
+.edge-prereq {
+    stroke: rgba(15, 23, 42, .40);
+}
+
+/* concurrent = teal dashed */
+.edge-concurrent {
+    stroke: rgba(13, 148, 136, .55);
+    stroke-dasharray: 7 7;
+}
+
+/* active highlight */
+.edge.active {
+    opacity: .95;
+    stroke-width: 4.2;
+}
+
+.edge-prereq.active {
+    stroke: rgba(2, 132, 199, .90);
+    filter: drop-shadow(0 0 7px rgba(2, 132, 199, .22));
+}
+
+.edge-concurrent.active {
+    stroke: rgba(13, 148, 136, .92);
+    filter: drop-shadow(0 0 7px rgba(13, 148, 136, .22));
+}

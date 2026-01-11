@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ICsNKgkfZSI=",
+  "dgSpecHash": "t5LqnRRKpDA=",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Desktop\\IT_Gied\\IT_Gied\\IT_Gied.csproj",
   "expectedPackageFiles": [
@@ -156,6 +156,7 @@
     "C:\\Users\\USER\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.4\\system.security.cryptography.pkcs.6.0.4.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\system.servicemodel.syndication\\10.0.1\\system.servicemodel.syndication.10.0.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",

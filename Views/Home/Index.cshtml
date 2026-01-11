@@ -1,0 +1,76 @@
+﻿<div class="home-soft-bg">
+    @if (Model == null)
+    {
+        <div class="text-center">
+            <h1 class="display-6">Welcome to IT Guide</h1>
+            <p class="text-muted">Please log in to view your progress card.</p>
+
+            <a class="btn btn-primary" asp-controller="User" asp-action="login">Log in</a>
+            <a class="btn btn-outline-primary" asp-controller="User" asp-action="Regester">Sign up</a>
+        </div>
+    }
+    else
+    {
+        var imgPath = string.IsNullOrWhiteSpace(Model.Image_Name)
+            ? "/images/default-avatar.png"
+            : $"/Uplode/Profiles/{Model.Image_Name}";
+
+        <div class="d-flex justify-content-center align-items-center" style="min-height:75vh;">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card home-student-card border-0 mx-auto">
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="@imgPath"
+                                     alt="Profile"
+                                     class="home-avatar" />
+
+                                <div>
+                                    <h4 class="mb-1">Student Card</h4>
+                                    <div class="text-muted">Progress overview</div>
+                                </div>
+                            </div>
+
+                            <span class="badge bg-success">Active</span>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="mb-3">
+                            <div class="text-muted">Name</div>
+                            <div class="fw-semibold fs-5">@Model.StudentName</div>
+                        </div>
+
+                        <div class="row text-center mt-4">
+                            <div class="col">
+                                <div class="text-muted">Completed Hours</div>
+                                <div class="display-6 fw-bold">@Model.CompletedHours</div>
+                            </div>
+                            <div class="col">
+                                <div class="text-muted">Total Courses</div>
+                                <div class="display-6 fw-bold">@Model.TotalCourses</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-between text-muted">
+                                <span>Completion</span>
+                                <span>@Model.CompletionPercent%</span>
+                            </div>
+                            <div class="progress home-progress">
+                                <div class="progress-bar" role="progressbar" style="width:@Model.CompletionPercent%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 d-flex gap-2">
+                            <a class="btn btn-primary" asp-controller="Courses" asp-action="Index">Open Roadmap</a>
+                            <a class="btn btn-outline-secondary" asp-controller="User" asp-action="EditProfile">Profile</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

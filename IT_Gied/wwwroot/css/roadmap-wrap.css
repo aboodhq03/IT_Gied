@@ -1,0 +1,266 @@
+﻿/* خلفية ناعمة */
+body {
+    background: radial-gradient(900px 650px at 20% 15%, rgba(30,136,229,.18), transparent 60%), radial-gradient(900px 650px at 80% 75%, rgba(46,125,50,.14), transparent 60%), #f6f7fb !important;
+}
+
+/* خلفية الكارد (النود) */
+.webdev-page .node {
+    background: rgba(255,255,255,.94) !important;
+    border: 1px solid rgba(15,23,42,.12) !important;
+    box-shadow: 0 10px 22px rgba(15,23,42,.10) !important;
+}
+
+
+:root {
+    /* Base */
+    --card-bg: rgba(255,255,255,.92);
+    --card-bg-strong: rgba(255,255,255,.96);
+    --text: rgba(15, 23, 42, .92);
+    /* Borders / shadows */
+    --border: rgba(15, 23, 42, .12);
+    --shadow: 0 10px 22px rgba(15, 23, 42, .10);
+    --shadow-hover: 0 14px 30px rgba(15, 23, 42, .14);
+    /* Brand colors (أزرق + أخضر مثل صفحات roadmap) */
+    --blue-weak: rgba(30, 136, 229, .14);
+    --blue-border: rgba(30, 136, 229, .28);
+    --blue-text: rgba(11, 60, 122, .95);
+    --green-weak: rgba(46, 125, 50, .14);
+    --green-border: rgba(46, 125, 50, .28);
+    --green-text: rgba(15, 75, 27, .95);
+    /* Neutral */
+    --gray-weak: rgba(15, 23, 42, .06);
+    --gray-border: rgba(15, 23, 42, .12);
+    /* Edges */
+    --edge: rgba(15, 23, 42, .22);
+    --edge-locked: rgba(15, 23, 42, .14);
+    --edge-done: rgba(46, 125, 50, .55);
+}
+
+/* =========================
+   Card style for nodes
+   (safe: doesn't change positioning logic)
+   ========================= */
+
+.webdev-page .roadmap-wrap {
+    position: relative;
+    padding: 40px;
+}
+
+.webdev-page .nodes {
+    position: relative;
+    min-height: 700px;
+}
+
+/* SVG edges stays behind cards */
+.webdev-page .edges {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Node becomes a card, but keeps absolute placement from inline style left/top */
+.webdev-page .node {
+    position: absolute; /* مهم: لا تغيرها */
+    z-index: 2;
+    width: 220px; /* عدّل المقاس إذا بدك */
+    padding: 14px 14px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease, opacity .15s ease;
+    user-select: none;
+    color: var(--text);
+}
+
+    .webdev-page .node:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    /* Code chip */
+    .webdev-page .node .code {
+        display: inline-flex;
+        align-self: flex-start;
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: .2px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--gray-weak);
+        color: rgba(15, 23, 42, .82);
+    }
+
+    /* Title */
+    .webdev-page .node .name {
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 1.25;
+        margin: 0;
+    }
+
+    /* =========================
+   Buttons (Done + Details)
+   ========================= */
+
+    .webdev-page .node .btn-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* DONE button */
+    .webdev-page .node .done-btn {
+        flex: 1;
+        width: auto;
+        margin-top: 0;
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 800;
+        cursor: pointer;
+        background: var(--gray-weak);
+        color: rgba(15, 23, 42, .88);
+        transition: filter .15s ease, transform .05s ease;
+    }
+
+        .webdev-page .node .done-btn:active {
+            transform: translateY(1px);
+        }
+
+        .webdev-page .node .done-btn:disabled {
+            cursor: not-allowed;
+            opacity: .55;
+        }
+
+    /* DETAILS button */
+    .webdev-page .node .details-btn {
+        flex: 1;
+        width: auto;
+        margin-top: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 800;
+        border: 1px solid var(--gray-border);
+        background: rgba(255,255,255,.70);
+        color: rgba(15, 23, 42, .88);
+        transition: filter .15s ease, transform .05s ease;
+    }
+
+        .webdev-page .node .details-btn:hover {
+            filter: brightness(0.98);
+        }
+
+        .webdev-page .node .details-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* تعطيل زر التفاصيل */
+        .webdev-page .node .details-btn[aria-disabled="true"] {
+            opacity: .55;
+            pointer-events: none;
+        }
+
+    /* =========================
+   Optional: Link button (if you still use it)
+   ========================= */
+    .webdev-page .node .link-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 8px;
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 800;
+        border: 1px solid var(--blue-border);
+        background: var(--blue-weak);
+        color: var(--blue-text);
+    }
+
+        .webdev-page .node .link-btn:hover {
+            filter: brightness(0.98);
+        }
+
+    /* =========================
+   States
+   ========================= */
+
+    /* Unlocked (Blue) */
+    .webdev-page .node.unlocked {
+        border-color: var(--blue-border);
+    }
+
+        .webdev-page .node.unlocked .code {
+            background: var(--blue-weak);
+            border-color: var(--blue-border);
+            color: var(--blue-text);
+        }
+
+        .webdev-page .node.unlocked .details-btn {
+            border-color: var(--blue-border);
+            background: rgba(30,136,229,.10);
+            color: var(--blue-text);
+        }
+
+    /* Completed (Green) */
+    .webdev-page .node.completed {
+        border-color: var(--green-border);
+        background: var(--card-bg-strong);
+    }
+
+        .webdev-page .node.completed .code {
+            background: var(--green-weak);
+            border-color: var(--green-border);
+            color: var(--green-text);
+        }
+
+        .webdev-page .node.completed .done-btn {
+            background: rgba(46,125,50,.12);
+            color: var(--green-text);
+        }
+
+        .webdev-page .node.completed .details-btn {
+            border-color: var(--green-border);
+            background: rgba(46,125,50,.10);
+            color: var(--green-text);
+        }
+
+    /* Locked (Gray) */
+    .webdev-page .node.locked {
+        filter: grayscale(.25);
+        opacity: .72;
+    }
+
+        .webdev-page .node.locked .code {
+            background: rgba(0,0,0,.03);
+        }
+
+/* =========================
+   Edges style (keep working, just nicer)
+   ========================= */
+.webdev-page .edge {
+    stroke: var(--edge);
+    stroke-width: 2;
+}
+
+    .webdev-page .edge.locked {
+        stroke-dasharray: 6 6;
+        stroke: var(--edge-locked);
+    }
+
+    .webdev-page .edge.done {
+        stroke: var(--edge-done);
+        stroke-width: 2.5;
+    }

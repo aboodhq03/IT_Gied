@@ -1,0 +1,73 @@
+@model IT_Gied.Models.AdminRoleViewModel
+@{
+    ViewData["Title"] = "Grant Admin Role";
+}
+
+<div class="container mt-5 admin-roles-page">
+    <div class="glass-panel p-4 mb-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+            <div>
+                <h1 class="display-5 text-white mb-2"><i class="fas fa-user-shield text-primary me-2"></i> Grant Admin Role</h1>
+                <p class="text-muted mb-0">Assign or remove the `Admin` role from users only.</p>
+            </div>
+            <a asp-action="Index" class="btn btn-outline-light">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <div class="glass-panel admin-card">
+        <div class="admin-card-body p-0">
+            <table class="table admin-users-table table-hover mb-0">
+                <thead class="admin-table-head">
+                    <tr>
+                        <th>Email</th>
+                        <th>User Name</th>
+                        <th>Status</th>
+                        <th class="text-end">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Users.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center py-4 text-muted">No users found.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.UserName</td>
+                                <td>
+                                    @if (user.IsAdmin)
+                                    {
+                                        <span class="badge bg-success">Admin</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">User</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    @if (!user.IsAdmin)
+                                    {
+                                        <form asp-action="GrantAdmin" asp-route-id="@user.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-primary btn-sm">Give Admin</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="RevokeAdmin" asp-route-id="@user.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">Remove Admin</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

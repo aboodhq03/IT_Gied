@@ -1,0 +1,218 @@
+@model IT_Gied.Models.ProgressDashboardVM
+@{
+    ViewData["Title"] = "Home Hub";
+}
+
+<!-- Hero Section -->
+<section class="py-5 overflow-hidden">
+    <div class="container text-center py-5 reveal">
+        <h1 class="display-3 fw-bold mb-3"><span class="gradient-text">Navigate Your Future</span></h1>
+        <p class="lead text-muted fs-4 mx-auto mb-5" style="max-width: 700px;">
+            The ultimate companion for IT students. AI-powered advising, smart roadmaps, and GPA tracking all in one modern portal.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <a class="btn btn-primary btn-lg px-5 shadow-lg" asp-controller="User" asp-action="Register">Start Your Journey</a>
+                <a class="btn btn-outline-light btn-lg px-5" asp-controller="Home" asp-action="aboutus">Learn More</a>
+            }
+            else
+            {
+                <a href="#hub" class="btn btn-primary btn-lg px-5 shadow-lg">Enter Command Center</a>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Grid (Authenticated) -->
+@if (Model != null)
+{
+    @if (Model.IsAdmin)
+    {
+        <!-- Admin Dashboard Section (واجهة المسؤول) -->
+        <section class="container mb-5 reveal">
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-12">
+                    <div class="glass-panel p-4" style="border-color: var(--secondary);">
+                        <div class="d-flex align-items-center gap-4 mb-4">
+                            <div class="rounded-circle bg-secondary bg-opacity-20 p-3 shadow-lg border border-secondary border-opacity-25" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-shield-alt text-secondary fs-1"></i>
+                            </div>
+                            <div>
+                                <h2 class="mb-0">Command Center: @Model.StudentName</h2>
+                                <span class="badge bg-secondary text-white small fw-bold mt-1 px-3 py-2">SYSTEM ADMINISTRATOR SESSION</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="stat-pill text-center d-flex flex-column justify-content-center align-items-center" style="border-color: rgba(var(--secondary-rgb), 0.1);">
+                                    <div class="text-muted small mb-1">Total Registered Users</div>
+                                    <div class="stat-value text-secondary">@Model.TotalUsersCount</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-pill text-center d-flex flex-column justify-content-center align-items-center" style="border-color: rgba(var(--secondary-rgb), 0.1);">
+                                    <div class="text-muted small mb-1">System Roles</div>
+                                    <div class="stat-value text-accent">@Model.TotalRolesCount</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-pill d-flex flex-column justify-content-center gap-2" style="border-color: rgba(var(--secondary-rgb), 0.1);">
+                                    <a asp-controller="Admin" asp-action="Users" class="btn btn-secondary btn-sm w-100 py-2 fw-bold text-white shadow-sm">Manage Users</a>
+                                    <a asp-controller="Admin" asp-action="Roles" class="btn btn-outline-secondary btn-sm w-100 py-2 shadow-sm">Grant Admin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <!-- Student Dashboard Section (واجهة الطالب) -->
+        <section class="container mb-5 reveal">
+            <div class="row g-4 align-items-stretch">
+                <!-- User Info & Progress -->
+                <div class="col-lg-12">
+                    <div class="glass-panel p-4">
+                        <div class="d-flex align-items-center gap-4 mb-4">
+                            @{
+                                var imgPath = string.IsNullOrWhiteSpace(Model.Image_Name) ? "/images/default-avatar.png" : $"/Uplode/Profiles/{Model.Image_Name}";
+                            }
+                            <img src="@imgPath" class="rounded-circle shadow-lg border border-3 border-primary" style="width: 80px; height: 80px; object-fit: cover;">
+                            <div>
+                                <h2 class="mb-0">Hi, @Model.StudentName!</h2>
+                                <span class="text-primary small fw-bold">AUTHENTICATED STUDENT SESSION</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="stat-pill text-center">
+                                    <div class="text-muted small mb-1">Completed Hours</div>
+                                    <div class="stat-value text-primary">@Model.CompletedHours</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-pill text-center">
+                                    <div class="text-muted small mb-1">Total Courses</div>
+                                    <div class="stat-value text-accent">@Model.TotalCourses</div>
+                                </div>
+                            </div>
+                             <div class="col-md-3">
+                                <div class="stat-pill text-center">
+                                    <div class="text-muted small mb-1">Cumulative GPA</div>
+                                    <div class="stat-value text-success">@(Model.CumulativeGpa?.ToString("0.00") ?? "--")</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-pill text-center d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-between mb-1 small text-muted">
+                                        <span>Program Progress</span>
+                                        <span>@Model.CompletionPercent%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background: rgba(255,255,255,0.05);">
+                                        <div class="progress-bar bg-primary" style="width: @Model.CompletionPercent%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+
+<!-- Central Hub Grid -->
+<section id="hub" class="container py-5">
+    <div class="text-center mb-5 reveal">
+        <h2 class="display-5 fw-bold mb-2">Central Feature Hub</h2>
+        <p class="text-muted">Access everything you need for your academic success</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Academic Advisor -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.1s">
+            <a asp-controller="Advisor" asp-action="Index" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-user-tie text-primary"></i></div>
+                <h3 class="mb-3">Academic Advisor</h3>
+                <p class="text-muted small">Get structured academic guidance and course recommendations for your program.</p>
+            </a>
+        </div>
+
+        <!-- Course Roadmap -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s">
+            <a asp-controller="Courses" asp-action="Index" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-map-marked-alt text-secondary"></i></div>
+                <h3 class="mb-3">Course Roadmap</h3>
+                <p class="text-muted small">Visualize your degree path, prerequisites, and track your completion progress.</p>
+            </a>
+        </div>
+
+        <!-- Learning Tracks -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.25s">
+            <a asp-controller="Tracks" asp-action="Index" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-route text-success"></i></div>
+                <h3 class="mb-3">Learning Tracks</h3>
+                <p class="text-muted small">Explore curated IT tracks and choose the best path for your skills and goals.</p>
+            </a>
+        </div>
+
+        <!-- GPA Calculator -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.3s">
+            <a asp-controller="Gpa" asp-action="Index" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-calculator text-accent"></i></div>
+                <h3 class="mb-3">GPA Calculator</h3>
+                <p class="text-muted small">Calculate your current and forecasted GPA with our advanced tools.</p>
+            </a>
+        </div>
+
+        <!-- News & Insights -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.4s">
+            <a href="#news" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-newspaper text-info"></i></div>
+                <h3 class="mb-3">Tech Insights</h3>
+                <p class="text-muted small">Stay updated with the latest technological shifts and academic updates.</p>
+            </a>
+        </div>
+
+        <!-- Departments -->
+        <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.5s">
+            <a asp-controller="Departments" asp-action="Index" class="hub-card">
+                <div class="hub-icon"><i class="fas fa-university text-warning"></i></div>
+                <h3 class="mb-3">Departments</h3>
+                <p class="text-muted small">Explore college departments, tracks, and faculty information.</p>
+            </a>
+        </div>
+
+        <!-- Admin Dashboard (Conditional) -->
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.6s">
+                <a asp-controller="Admin" asp-action="Index" class="hub-card" style="border-color: var(--secondary);">
+                    <div class="hub-icon"><i class="fas fa-user-shield text-secondary"></i></div>
+                    <h3 class="mb-3">Admin Panel</h3>
+                    <p class="text-muted small">System administration, user management, and roles control.</p>
+                </a>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- News Section -->
+@if (Model == null && ViewBag.TechNews != null)
+{
+    <section id="news" class="container py-5 reveal">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+                <h2 class="display-6 fw-bold mb-1">Tech Pulse</h2>
+                <p class="text-muted mb-0">Latest global tech news for IT students</p>
+            </div>
+            <div class="badge bg-primary px-3 py-2 rounded-pill">LIVE UPDATES</div>
+        </div>
+        @await Html.PartialAsync("_TechNewsSection", (IEnumerable<IT_Gied.Models.NewsCardVM>)ViewBag.TechNews)
+    </section>
+}

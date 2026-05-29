@@ -1,0 +1,42 @@
+.student-benefits-hero {
+    background: linear-gradient(135deg, rgba(8, 15, 33, 0.95) 0%, rgba(17, 44, 74, 0.95) 100%);
+}
+
+.benefits-hero-card {
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.benefit-card {
+    background: rgba(15, 23, 42, 0.93);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.22);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.benefit-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 1.35rem;
+}
+
+.student-benefits-hero .btn {
+    min-width: 125px;
+}
+
+.active-category {
+    border-color: rgba(255, 255, 255, 0.75) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 767px) {
+    .student-benefits-hero {
+        text-align: center;
+    }
+}

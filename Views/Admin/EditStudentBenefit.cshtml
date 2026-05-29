@@ -1,0 +1,82 @@
+@model IT_Gied.Models.StudentBenefit
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Create Benefit" : "Edit Benefit";
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10">
+            <div class="glass-panel p-4 shadow-sm">
+                <h2 class="mb-4 text-center text-primary">
+                    <i class="fas @(Model.Id == 0 ? "fa-plus-circle" : "fa-edit")"></i>
+                    @(Model.Id == 0 ? "Create New Student Benefit" : "Update Benefit")
+                </h2>
+                <hr />
+
+                <form asp-action="SaveStudentBenefit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="Title" class="form-label fw-bold">Benefit Title</label>
+                            <input asp-for="Title" class="form-control" placeholder="GitHub Student Developer Pack" required />
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ProviderName" class="form-label fw-bold">Provider</label>
+                            <input asp-for="ProviderName" class="form-control" placeholder="GitHub" required />
+                            <span asp-validation-for="ProviderName" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Category" class="form-label fw-bold">Category</label>
+                            <select asp-for="Category" class="form-select" required>
+                                <option value="">Select category</option>
+                                @foreach (var category in categories)
+                                {
+                                    <option selected="@(category == Model.Category)" value="@category">@category</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Category" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Link" class="form-label fw-bold">External Link</label>
+                            <input asp-for="Link" class="form-control" placeholder="https://education.github.com/pack" required />
+                            <span asp-validation-for="Link" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Icon" class="form-label fw-bold">Icon CSS Class</label>
+                            <input asp-for="Icon" class="form-control" placeholder="fas fa-cloud" />
+                            <span asp-validation-for="Icon" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div class="form-check mt-4">
+                                <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+                                <label asp-for="IsActive" class="form-check-label fw-bold">Is Active</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Description" class="form-label fw-bold">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Describe the student benefit and eligibility."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5 flex-wrap gap-3">
+                        <a asp-action="StudentBenefits" class="btn btn-outline-secondary px-4">
+                            <i class="fas fa-arrow-left"></i> Back to Benefits
+                        </a>
+                        <button type="submit" class="btn btn-primary px-5 shadow-sm">
+                            <i class="fas fa-save"></i> Save Benefit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

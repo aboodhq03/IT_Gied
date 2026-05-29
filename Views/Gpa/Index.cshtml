@@ -1,0 +1,102 @@
+﻿<link rel="stylesheet" href="~/css/gpa.css" asp-append-version="true" />
+
+@model IT_Gied.Models.UserGpa
+
+@{
+    ViewData["Title"] = "Cumulative GPA Calculator";
+    var saved = Model?.CumulativeGpa ?? 0m;
+}
+
+<div class="container mt-5 gpa-page">
+    <div class="glass-panel p-4 mb-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+            <div>
+                <h2>GPA Calculator</h2>
+                <p class="text-muted mb-0">Enter your current term courses and previous credits to compute your updated cumulative GPA instantly.</p>
+            </div>
+            <div class="saved-box summary-box">
+                <div class="summary-label">Last saved cumulative GPA</div>
+                <div class="summary-value">@saved.ToString("0.00")</div>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["Msg"] != null)
+    {
+    <div class="msg-success">
+        @TempData["Msg"]
+    </div>
+}
+
+<form asp-action="Save" method="post" id="gpaForm">
+    @Html.AntiForgeryToken()
+
+    <div class="glass-panel admin-card mb-4">
+        <div class="admin-card-header">
+            <h4 class="mb-0">Current Term Courses</h4>
+        </div>
+        <div class="admin-card-body">
+            <table class="gpa-table">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="rows">
+                    <tr>
+                        <td><input class="cname" type="text" placeholder="Course name" /></td>
+                        <td><input class="credits" type="number" min="0" step="1" /></td>
+                        <td><input class="grade" type="text" placeholder="e.g. A+ / B / C-" /></td>
+                        <td><button type="button" class="del">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="actions">
+                <button type="button" id="addRow">Add Course</button>
+            </div>
+
+            <div class="grade-hint">
+                <strong>Grade mapping:</strong> A+ 4.2, A 4.0, A- 3.75, B+ 3.5, B 3.25, B- 3.0, C+ 2.75, C 2.5, C- 2.25, D+ 2.0, D 1.75, D- 1.5, F 0.5.
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-panel admin-card mb-4">
+        <div class="admin-card-header">
+            <h4 class="mb-0">Previous Term Summary</h4>
+        </div>
+        <div class="admin-card-body">
+            <div class="prev-wrap">
+                <label>
+                    Previous cumulative GPA
+                    <input id="oldGpa" type="number" step="0.01" placeholder="Previous cumulative GPA" />
+                </label>
+                <label>
+                    Previous total credits
+                    <input id="oldCredits" type="number" step="1" placeholder="Previous total credits" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-panel admin-card mb-4">
+        <div class="admin-card-body results">
+            <div><b>Term Credits:</b> <span id="termCredits">0</span></div>
+            <div><b>Term GPA:</b> <span id="termGpa">0.00</span></div>
+            <div class="big"><b>New Cumulative GPA:</b> <span id="newCumGpa">0.00</span></div>
+        </div>
+    </div>
+
+    <input type="hidden" name="cumulativeGpa" id="cumulativeGpa" value="0.00" />
+
+    <div class="actions actions-bottom">
+        <button type="submit">Save Cumulative GPA</button>
+    </div>
+</form>
+</div>
+
+<script src="~/js/gpa.js" asp-append-version="true"></script>

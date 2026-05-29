@@ -1,0 +1,353 @@
+@model IT_Gied.Models.AdvisorViewModel
+@{
+    ViewData["Title"] = "Academic Advisor | المرشد الأكاديمي";
+}
+
+<style>
+    :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --secondary: #9ca3af;
+        --success: #10b981;
+        --warning: #fbbf24;
+        --danger: #f87171;
+        --border-soft: rgba(255, 255, 255, 0.08);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ===== Let Site Background Show Through ===== */
+
+    .advisor-header {
+        background: rgba(255, 255, 255, 0.01);
+        border-bottom: 1px solid var(--border-soft);
+        padding: 2.5rem 0;
+        margin-bottom: 2.5rem;
+    }
+
+    .advisor-card {
+        background: rgba(17, 24, 39, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--border-soft);
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+        height: 100%;
+        color: #ffffff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .advisor-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .stat-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+    }
+
+    .badge-gpa { 
+        background: rgba(99, 102, 241, 0.1); 
+        color: #818cf8; 
+        border: 1px solid rgba(99, 102, 241, 0.3); 
+    }
+    
+    .badge-hours { 
+        background: rgba(16, 185, 129, 0.1); 
+        color: #34d399; 
+        border: 1px solid rgba(16, 185, 129, 0.3); 
+    }
+
+    .form-label { 
+        font-weight: 600; 
+        color: #cbd5e1; 
+        margin-bottom: 0.5rem; 
+    }
+    
+    .custom-input {
+        border: 1px solid var(--border-soft);
+        border-radius: 12px;
+        padding: 12px 16px;
+        transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        font-weight: 500;
+        width: 100%;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.04);
+        color: #ffffff;
+    }
+    
+    .custom-input:focus {
+        border-color: var(--primary);
+        background-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        outline: none;
+    }
+    
+    .custom-input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+        color: #fff;
+        font-weight: 700;
+        padding: 14px;
+        border-radius: 12px;
+        border: none;
+        transition: all 0.3s;
+        font-size: 1.05rem;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.5);
+        color: #fff;
+        filter: brightness(1.1);
+    }
+
+    .recommendation-table {
+        margin-top: 1rem;
+        color: #ffffff;
+    }
+
+    .recommendation-table th {
+        background: transparent;
+        color: var(--secondary);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--border-soft);
+        padding-bottom: 1rem;
+    }
+
+    .course-row td {
+        padding: 1.2rem 0.5rem;
+        vertical-align: middle;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+    }
+
+    .course-row:last-child td {
+        border-bottom: none;
+    }
+
+    .course-row:hover { 
+        background: rgba(255, 255, 255, 0.02); 
+    }
+
+    .status-pill {
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 20px;
+        display: inline-block;
+    }
+    .status-new { 
+        background: rgba(16, 185, 129, 0.1); 
+        color: #34d399; 
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .status-retake { 
+        background: rgba(239, 68, 68, 0.1); 
+        color: #f87171; 
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .advisor-insights {
+        background: rgba(245, 158, 11, 0.04);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        padding: 2rem;
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.05);
+    }
+
+    .insight-title {
+        color: var(--warning);
+        font-weight: 800;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.1rem;
+    }
+    
+    .hours-input-wrapper {
+        position: relative;
+    }
+    
+    .hours-input-wrapper i {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary);
+    }
+    
+    .hours-input-wrapper input {
+        padding-right: 45px;
+    }
+</style>
+
+<div class="advisor-header">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+            <div class="text-center text-md-start">
+                <h1 class="fw-bold mb-2"><i class="fas fa-user-graduate text-primary me-2"></i> Academic Advisor</h1>
+                <p class="text-muted mb-0 fs-5">نظام الإرشاد الأكاديمي الذكي لتخطيط المسيرة الدراسية</p>
+            </div>
+            <div class="d-flex gap-3">
+                <div class="stat-badge badge-gpa">
+                    <i class="fas fa-star text-warning"></i>
+                    <span>المعدل التراكمي (GPA): @(Model.GPA?.ToString("0.00") ?? "0.00")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-5" dir="rtl">
+    <div class="row g-4">
+        <!-- Input Section -->
+        <div class="col-lg-4">
+            <div class="advisor-card">
+                <div class="d-flex align-items-center mb-4 gap-2">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle">
+                        <i class="fas fa-sliders-h text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold m-0">إعدادات الفصل الدراسي</h5>
+                </div>
+                
+                <form asp-action="GetRecommendation" method="post">
+                    <div class="mb-4">
+                        <label class="form-label">الساعات المستهدفة للفصل</label>
+                        <div class="hours-input-wrapper">
+                            <i class="fas fa-clock"></i>
+                            <input type="number" asp-for="AllowedCreditHours" class="custom-input" placeholder="أدخل عدد الساعات (مثال: 15)" min="3" max="21" value="@(Model.AllowedCreditHours > 0 ? Model.AllowedCreditHours : 15)" />
+                        </div>
+                        <small class="text-muted d-block mt-2"><i class="fas fa-info-circle me-1"></i> يعتمد الحد الأقصى للساعات (تصل إلى 21) على معدلك التراكمي ونظام الجامعة.</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">ملاحظات إضافية</label>
+                        <textarea asp-for="AdditionalNotes" class="custom-input" rows="3" placeholder="أية تفاصيل ترغب في أخذها بعين الاعتبار..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit w-100">
+                        <i class="fas fa-magic me-2"></i> استخراج التوصيات
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="col-lg-8">
+            @if (Model.Result != null)
+            {
+                <div class="advisor-card mb-4 animate__animated animate__fadeIn">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="bg-success bg-opacity-10 p-2 rounded-circle">
+                                <i class="fas fa-clipboard-check text-success"></i>
+                            </div>
+                            <h5 class="fw-bold m-0">المواد المقترحة للتسجيل</h5>
+                        </div>
+                        <div class="stat-badge badge-hours">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>إجمالي الساعات: @Model.Result.TotalRecommendedCredits</span>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table recommendation-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>رمز المادة</th>
+                                    <th>اسم المادة</th>
+                                    <th class="text-center">الساعات</th>
+                                    <th class="text-center">المتطلبات</th>
+                                    <th class="text-center">الصعوبة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var course in Model.Result.Courses)
+                                {
+                                    <tr class="course-row">
+                                        <td class="fw-bold text-primary">@course.Code</td>
+                                        <td class="fw-medium">
+                                            <div>@course.Name</div>
+                                            @if (!string.IsNullOrEmpty(course.Description))
+                                            {
+                                                <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">@course.Description</small>
+                                            }
+                                        </td>
+                                        <td class="text-center fw-bold text-secondary">@course.CreditHours</td>
+                                        <td class="text-center">
+                                            @if (!string.IsNullOrEmpty(course.Prerequisites))
+                                            {
+                                                <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">@course.Prerequisites</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted small">--</span>
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            @if (course.AverageDifficulty > 0)
+                                            {
+                                                <span class="badge bg-light text-dark border"><i class="fas fa-chart-line text-warning me-1"></i> @course.AverageDifficulty.ToString("0.0")/10</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted small">--</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.AIExplanation))
+                {
+                    <div class="advisor-insights mt-4 animate__animated animate__fadeInUp">
+                        <div class="insight-title">
+                            <i class="fas fa-robot text-warning fs-4"></i>
+                            <span>تحليل الموهبة والمسار الشخصي (AI Analysis)</span>
+                        </div>
+                        <div class="text-light fw-medium" style="white-space: pre-line; line-height: 1.8; font-size: 0.95rem;">
+                            @Model.AIExplanation
+                        </div>
+                        <hr class="border-warning opacity-25 my-3">
+                        <div class="small text-muted d-flex align-items-center gap-2">
+                            <i class="fas fa-info-circle text-warning"></i>
+                            <span>تم توليد هذا التحليل بناءً على أدائك السابق وتقييمات زملائك للمواد.</span>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="advisor-card d-flex flex-column align-items-center justify-content-center py-5 text-center h-100" style="min-height: 400px;">
+                    <div class="mb-4 bg-primary bg-opacity-10 p-4 rounded-circle">
+                        <i class="fas fa-compass fs-1 text-primary"></i>
+                    </div>
+                    <h4 class="fw-bold text-light mb-3">بانتظار طلبك</h4>
+                    <p class="text-muted fs-6 mx-auto" style="max-width: 400px;">قم بإدخال الساعات المطلوبة في النموذج والضغط على زر استخراج التوصيات للحصول على خطة الفصل الدراسي المثلى.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

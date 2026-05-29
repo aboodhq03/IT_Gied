@@ -1,0 +1,67 @@
+﻿@model List<IT_Gied.Models.TrackNodeVM>
+
+@{
+    ViewData["Title"] = "WebDev Roadmap";
+}
+
+@* <link rel="stylesheet" href="~/css/roadmap-wrap.css" asp-append-version="true" />
+ *@
+ <link rel="stylesheet" href="~/css/roadmap-wrap.css?v=5" />
+<link rel="stylesheet" href="~/css/roadmap-wrap.css?v=999" />
+
+
+
+<!-- Anti-forgery token for fetch() -->
+<form id="__af" method="post" style="display:none;">
+    @Html.AntiForgeryToken()
+</form>
+
+<div class="webdev-page">
+    <div class="roadmap-wrap">
+        <div id="nodes" class="nodes">
+            <svg id="edges" class="edges"></svg>
+
+            @foreach (var n in Model)
+            {
+                var cls = n.IsCompleted ? "completed" : (n.IsUnlocked ? "unlocked" : "locked");
+
+                var x = n.X;
+                var y = n.Y;
+
+                <div class="node @cls"
+                     style="left:@(x)px; top:@(y)px;"
+                     data-id="@n.Id">
+
+                    <div class="code">@n.Code</div>
+                    <div class="name" title="@n.Name">@n.Name</div>
+
+                    <div class="btn-row">
+                        <button class="done-btn"
+                                type="button"
+                                onclick="toggleComplete(@n.Id)"
+                                @(n.IsUnlocked || n.IsCompleted ? "" : "disabled")>
+                            @(n.IsCompleted ? "إلغاء" : "تم")
+
+                        </button>
+
+                        <a class="details-btn"
+                           href="@(string.IsNullOrWhiteSpace(n.DetailsUrl) ? "#" : n.DetailsUrl)"
+                           @((n.IsUnlocked || n.IsCompleted) && !string.IsNullOrWhiteSpace(n.DetailsUrl)
+                                                  ? ""
+                                                  : "aria-disabled=\"true\" tabindex=\"-1\"")>
+                        Details
+                    </a>
+                </div>
+            </div>
+                        }
+        </div>
+    </div>
+</div>
+
+<script>
+    // Links are used by webdev-roadmap.js to draw edges
+    window.links = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.Links ?? new object[0]));
+</script>
+
+<script src="~/js/webdev-roadmap.js" asp-append-version="true"></script>
+<script src="~/js/webdev-toggle.js" asp-append-version="true"></script>

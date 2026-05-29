@@ -1,0 +1,266 @@
+/* =======================================
+   DARK GLASSMORPHISM ACADEMIC ROADMAP
+   ======================================= */
+
+/* ===== Let Site Background Show Through ===== */
+
+/* ===== Wrapper ===== */
+.roadmap-wrap {
+    padding: 28px 16px;
+    background: transparent !important;
+}
+
+/* ===== Nodes grid (4 per row) ===== */
+.nodes {
+    position: relative;
+    width: min(1200px, 96vw);
+    margin: 0 auto;
+    padding: 34px 16px 120px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 52px 56px;
+    background: transparent !important;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .nodes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 780px) {
+    .nodes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Prevent overlays */
+.nodes::before, .nodes::after,
+.roadmap-wrap::before, .roadmap-wrap::after {
+    content: none !important;
+}
+
+/* ===== SVG edges layer ===== */
+.edges {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* =======================================
+   NODE (Modern Dark Glassmorphism)
+   ======================================= */
+.node {
+    position: relative;
+    z-index: 2;
+    width: 240px;
+    min-height: 200px;
+    border-radius: 24px;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.node .code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.node .name {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    text-align: center;
+    flex-grow: 1;
+    margin: 10px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* form reset */
+.node .done-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Node states ===== */
+.node.locked {
+    opacity: .40;
+    filter: grayscale(.65);
+    border-color: rgba(255, 255, 255, 0.04);
+    background: rgba(17, 24, 39, 0.3);
+}
+
+.node.unlocked {
+    border-color: rgba(99, 102, 241, 0.35);
+    background: rgba(99, 102, 241, 0.03);
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+}
+
+.node.unlocked:hover {
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.3), 0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+.node.completed {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.03);
+    box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+}
+
+.node.completed:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3), 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+/* =======================================
+   EDGES (Glowing & High Contrast)
+   ======================================= */
+.edge {
+    stroke-width: 3.2;
+    opacity: .55;
+    stroke-linecap: round;
+    transition: opacity .15s ease, stroke-width .15s ease, stroke .15s ease, filter .15s ease;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5));
+}
+
+/* prereq = soft white/gray */
+.edge-prereq {
+    stroke: rgba(255, 255, 255, 0.25);
+}
+
+/* concurrent = cyan dashed */
+.edge-concurrent {
+    stroke: rgba(34, 211, 238, 0.45);
+    stroke-dasharray: 7 7;
+}
+
+/* active highlight */
+.edge.active {
+    opacity: .95;
+    stroke-width: 4.2;
+}
+
+.edge-prereq.active {
+    stroke: rgba(99, 102, 241, 0.9);
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+}
+
+.edge-concurrent.active {
+    stroke: rgba(34, 211, 238, 0.95);
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+}
+
+/* =======================================
+   TREE LEGEND (Glassmorphic)
+   ======================================= */
+.tree-legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* legend items */
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.legend-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* line samples */
+.legend-line {
+    width: 40px;
+    height: 0;
+    border-top: 4px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+}
+
+.legend-line--dashed {
+    border-top-style: dashed;
+    border-top-color: rgba(34, 211, 238, 0.7);
+}
+
+.legend-line--solid {
+    border-top-style: solid;
+}
+
+/* dots */
+.tree-legend .dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-left: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tree-legend .dot.locked {
+    background-color: #64748b;
+    border-color: #64748b;
+}
+
+.tree-legend .dot.unlocked {
+    background-color: rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+.tree-legend .dot.completed {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}

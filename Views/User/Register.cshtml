@@ -1,0 +1,80 @@
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<!--
+    Registration View - Modern Clean Design
+    واجهة التسجيل - تصميم عصري ونظيف
+-->
+
+<div class="container h-100 d-flex justify-content-center align-items-center py-5">
+    <div class="col-12 col-md-10 col-lg-6">
+        <div class="card glass-panel border-0 p-4 p-md-5 reveal">
+            <div class="text-center mb-5">
+                <div class="d-inline-flex justify-content-center align-items-center bg-white bg-opacity-10 rounded-circle mb-3 shadow-lg" style="width: 80px; height: 80px;">
+                    <i class="fs-1 bi bi-person-plus text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1 gradient-text">Create an Account</h2>
+                <p class="text-muted">Join IT Guide to track your professional journey</p>
+            </div>
+
+            <form asp-action="Register" asp-controller="User" method="post" enctype="multipart/form-data" role="form">
+                @Html.AntiForgeryToken()
+                
+                <!-- Display Error Messages (إظهار رسائل الخطأ) -->
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3 text-center fw-bold"></div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="UserName" class="form-control" placeholder="Full Name" />
+                        <label asp-for="UserName" class="ms-2">User Name</label>
+                        <span asp-validation-for="UserName" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Email" />
+                        <label asp-for="Email" class="ms-2">Email Address</label>
+                        <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                        <label asp-for="Password" class="ms-2">Password</label>
+                        <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" />
+                        <label asp-for="ConfirmPassword" class="ms-2">Confirm Password</label>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1 d-block"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageFile" class="form-label text-muted small mb-1 ms-1">Profile Image (Optional)</label>
+                    <input asp-for="ImageFile" class="form-control py-2" type="file" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-3 mb-4 rounded-3 fw-bold fs-5 shadow-lg">
+                    Create Account
+                </button>
+
+                <p class="text-center text-muted mb-0">
+                    Already have an account? 
+                    <a asp-action="Login" asp-controller="User" class="text-primary fw-bold text-decoration-none border-bottom border-primary pb-1 ms-1">
+                        Sign in
+                    </a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

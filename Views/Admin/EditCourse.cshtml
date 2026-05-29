@@ -1,0 +1,151 @@
+@model IT_Gied.Models.Course
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Add New Course" : "Edit Course";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-panel p-4 shadow-sm">
+                <h2 class="mb-4 text-center text-primary">
+                    <i class="fas @(Model.Id == 0 ? "fa-plus-circle" : "fa-edit")"></i> 
+                    @(Model.Id == 0 ? "Add New Course" : "Edit Course Details")
+                </h2>
+                <hr />
+
+                <form asp-action="SaveCourse" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label asp-for="Code" class="form-label fw-bold">Course Code</label>
+                            <input asp-for="Code" class="form-control" placeholder="e.g. 821011" required />
+                            <span asp-validation-for="Code" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <label asp-for="Name" class="form-label fw-bold">Course Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Course title" required />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label asp-for="CreditHours" class="form-label fw-bold">Credit Hours</label>
+                            <input asp-for="CreditHours" type="number" class="form-control" required />
+                            <span asp-validation-for="CreditHours" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Description" class="form-label fw-bold">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Brief summary of the course..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Prerequisites Section -->
+                        <div class="col-12 mt-4">
+                            <h5 class="text-muted mb-3"><i class="fas fa-project-diagram"></i> Prerequisites (Optional)</h5>
+                            <div class="glass-input p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                                <div id="prerequisites-container">
+                                    @if (Model.Prerequisites != null && Model.Prerequisites.Any())
+                                    {
+                                        int i = 0;
+                                        foreach (var p in Model.Prerequisites)
+                                        {
+                                            <div class="row g-2 mb-2 prereq-row">
+                                                <div class="col-md-7">
+                                                    <select name="prereqIds" class="form-select bg-dark text-white border-0 shadow-sm">
+                                                        <option value="">-- Select Course --</option>
+                                                        @foreach (var c in (List<Course>)ViewBag.AllCourses)
+                                                        {
+                                                            <option value="@c.Id" selected="@(c.Id == p.PrerequisiteCourseId)">@c.Name (@c.Code)</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select name="prereqRelations" class="form-select bg-dark text-white border-0 shadow-sm">
+                                                        <option value="Prerequisite" selected="@(p.RelationType == "Prerequisite")">Prerequisite</option>
+                                                        <option value="Concurrent" selected="@(p.RelationType == "Concurrent")">Concurrent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <button type="button" class="btn btn-outline-danger w-100 border-0" onclick="this.closest('.prereq-row').remove()">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            i++;
+                                        }
+                                    }
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-info mt-2" onclick="addPrereqRow()">
+                                    <i class="fas fa-plus"></i> Add Prerequisite
+                                </button>
+                                <small class="text-muted d-block mt-2">If the course has no prerequisites, just leave this section empty.</small>
+                            </div>
+                        </div>
+
+                        <template id="prereq-template">
+                            <div class="row g-2 mb-2 prereq-row">
+                                <div class="col-md-7">
+                                    <select name="prereqIds" class="form-select bg-dark text-white border-0 shadow-sm">
+                                        <option value="">-- Select Course --</option>
+                                        @foreach (var c in (List<Course>)ViewBag.AllCourses)
+                                        {
+                                            <option value="@c.Id">@c.Name (@c.Code)</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="prereqRelations" class="form-select bg-dark text-white border-0 shadow-sm">
+                                        <option value="Prerequisite">Prerequisite</option>
+                                        <option value="Concurrent">Concurrent</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-outline-danger w-100 border-0" onclick="this.closest('.prereq-row').remove()">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div class="col-12 mt-4">
+                            <h5 class="text-muted mb-3"><i class="fas fa-link"></i> External Detail Links</h5>
+                            <div class="mb-3">
+                                <label asp-for="DetailsUrl" class="form-label">Arabic Details URL</label>
+                                <input asp-for="DetailsUrl" class="form-control" placeholder="https://..." />
+                                <span asp-validation-for="DetailsUrl" class="text-danger small"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="EDetailsUrl" class="form-label">English Details URL</label>
+                                <input asp-for="EDetailsUrl" class="form-control" placeholder="https://..." />
+                                <span asp-validation-for="EDetailsUrl" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-5">
+                        <a asp-action="Courses" class="btn btn-outline-secondary px-4">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                        <button type="submit" class="btn btn-primary px-5 shadow-sm">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function addPrereqRow() {
+            const template = document.getElementById('prereq-template');
+            const container = document.getElementById('prerequisites-container');
+            const clone = template.content.cloneNode(true);
+            container.appendChild(clone);
+        }
+    </script>
+}

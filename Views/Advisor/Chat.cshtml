@@ -1,0 +1,169 @@
+@model IT_Gied.Models.ChatViewModel
+@{
+    ViewData["Title"] = "محادثة المرشد الذكي";
+}
+
+<link rel="stylesheet" href="~/css/advisor.css" />
+<style>
+    .chat-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 200px);
+    }
+    
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-primary) transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+        background-color: var(--accent-primary);
+        border-radius: 10px;
+    }
+
+    .message {
+        max-width: 80%;
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .message-student {
+        align-self: flex-end;
+        background: var(--accent-secondary);
+        color: white;
+        border-bottom-right-radius: 4px;
+    }
+
+    .message-ai {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--glass-border);
+        color: white;
+        border-bottom-left-radius: 4px;
+    }
+
+    .chat-input-area {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-top: 1px solid var(--glass-border);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .message-meta {
+        font-size: 0.7rem;
+        opacity: 0.6;
+        margin-top: 0.5rem;
+        display: block;
+    }
+</style>
+
+<div class="advisor-container" dir="rtl">
+    <div class="d-flex justify-content-between align-items-center mb-4 animate__animated animate__fadeIn">
+        <h2 class="m-0"><i class="fas fa-comments text-info me-2"></i> المحادثة الذكية</h2>
+        <a asp-action="Index" class="btn glass-card text-white text-decoration-none py-2">
+            <i class="fas fa-arrow-right me-2"></i> العودة للترشيحات
+        </a>
+    </div>
+
+    <div class="glass-card chat-wrapper animate__animated animate__fadeInUp">
+        <div class="chat-messages" id="chatMessages">
+            @if (Model.History != null && Model.History.Any())
+            {
+                @foreach (var item in Model.History.OrderBy(h => h.CreatedAt))
+                {
+                    <!-- Student -->
+                    <div class="message message-student animate__animated animate__fadeInRight">
+                        <div class="fw-bold mb-1">أنت</div>
+                        <div>@item.Question</div>
+                        <span class="message-meta">@item.CreatedAt.ToLocalTime().ToString("t")</span>
+                    </div>
+
+                    <!-- AI -->
+                    <div class="message message-ai animate__animated animate__fadeInLeft">
+                        <div class="fw-bold mb-1 text-info"><i class="fas fa-robot me-1"></i> المرشد الذكي</div>
+                        <div style="white-space: pre-line;">@item.Answer</div>
+                        <span class="message-meta">@item.CreatedAt.ToLocalTime().ToString("t")</span>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="text-center py-5 opacity-50" id="welcomeMsg">
+                    <i class="fas fa-robot fs-1 mb-3"></i>
+                    <h4>أهلاً بك! أنا مرشدك الأكاديمي</h4>
+                    <p>يمكنك سؤالي عن أي شيء يخص موادك، معدلك، أو خطتك الدراسية.</p>
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Model.Answer))
+            {
+                <div class="message message-ai animate__animated animate__fadeInLeft">
+                    <div class="fw-bold mb-1 text-info"><i class="fas fa-robot me-1"></i> المرشد الذكي</div>
+                    <div style="white-space: pre-line;">@Model.Answer</div>
+                    <span class="message-meta">@DateTime.Now.ToString("t")</span>
+                </div>
+            }
+        </div>
+
+        <div class="chat-input-area">
+            <form asp-action="Chat" method="post" id="chatForm">
+                <div class="input-group">
+                    <textarea asp-for="Question" class="form-control" rows="1" placeholder="اكتب سؤالك هنا..." required style="resize: none; background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.1); color: white;"></textarea>
+                    <button type="submit" class="btn btn-premium px-4" id="sendBtn">
+                        <i class="fas fa-paper-plane" id="sendIcon"></i>
+                        <span id="sendLoading" class="d-none">
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        document.getElementById('chatForm').addEventListener('submit', function() {
+            const btn = document.getElementById('sendBtn');
+            const icon = document.getElementById('sendIcon');
+            const loading = document.getElementById('sendLoading');
+            const welcome = document.getElementById('welcomeMsg');
+
+            if(welcome) welcome.classList.add('d-none');
+            
+            icon.classList.add('d-none');
+            loading.classList.remove('d-none');
+            btn.classList.add('disabled');
+        });
+
+        // Auto-expand textarea
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;resize:none;background:rgba(0,0,0,0.2);border-color:rgba(255,255,255,0.1);color:white;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+
+        function OnInput() {
+            this.style.height = 0;
+            this.style.height = (this.scrollHeight) + "px";
+        }
+    </script>
+}

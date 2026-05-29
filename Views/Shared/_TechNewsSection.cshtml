@@ -1,0 +1,120 @@
+@model IEnumerable<IT_Gied.Models.NewsCardVM>
+
+<style>
+    .news-card-modern {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition-base);
+        height: 100%;
+        backdrop-filter: blur(8px);
+    }
+
+    .news-card-modern:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--primary);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .news-thumb-modern {
+        height: 160px;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(0.8);
+        transition: var(--transition-base);
+    }
+
+    .news-card-modern:hover .news-thumb-modern {
+        filter: brightness(1.1);
+        transform: scale(1.05);
+    }
+
+    .news-title-modern {
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.75rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .news-title-modern a {
+        color: var(--text-main);
+        text-decoration: none;
+        transition: var(--transition-base);
+    }
+
+    .news-title-modern a:hover {
+        color: var(--primary);
+    }
+
+    .news-summary-modern {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="row g-4">
+    @if (Model == null || !Model.Any())
+    {
+        <div class="col-12">
+            <div class="glass-panel p-5 text-center text-muted">
+                <i class="fas fa-satellite-dish fa-3x mb-3 opacity-25"></i>
+                <p>No pulses detected. Check back later for tech updates.</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        @foreach (var n in Model.Take(6))
+        {
+            <div class="col-12 col-md-6 col-lg-4 reveal">
+                <div class="news-card-modern d-flex flex-column">
+                    <div class="overflow-hidden">
+                        @if (!string.IsNullOrWhiteSpace(n.ImageUrl))
+                        {
+                            <img src="@n.ImageUrl" class="news-thumb-modern" alt="Pulse Image" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070';">
+                        }
+                        else
+                        {
+                            <div class="news-thumb-modern d-flex align-items-center justify-content-center bg-dark text-primary fs-1">
+                                <i class="fas fa-terminal opacity-50"></i>
+                            </div>
+                        }
+                    </div>
+                    <div class="p-4 flex-grow-1 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-1">
+                                @n.Source
+                            </span>
+                            @if (n.Published != null)
+                            {
+                                <span class="small text-muted">@n.Published.Value.LocalDateTime.ToString("MMM dd")</span>
+                            }
+                        </div>
+                        <h5 class="news-title-modern">
+                            <a href="@n.Url" target="_blank">@n.Title</a>
+                        </h5>
+                        <p class="news-summary-modern">@n.Summary</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="small text-accent fw-bold text-uppercase tracking-wider">#@n.Category</span>
+                            <a href="@n.Url" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                                Read <i class="fas fa-external-link-alt ms-1 small"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

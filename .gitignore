@@ -1,0 +1,51 @@
+## Ignore Visual Studio temporary files, build results, and other artifacts.
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Re]leases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Log]/
+
+# Visual Studio 2015/2017/2019/2022 cache directory
+.vs/
+
+# Publish output
+publish/
+
+# Rider
+.idea/
+
+# Local configuration files
+appsettings.Development.json
+secrets.json
+
+# Temporary files
+*.tmp
+*.log
+*.json
+!appsettings.json
+!appsettings.Development.json
+!bower.json
+!package.json
+!bundleconfig.json
+
+# Keep models.json and read_log out of git
+models.json
+/bin/
+/obj/
+/read_log.exe
+/powershell.bat

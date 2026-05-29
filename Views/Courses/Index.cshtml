@@ -1,0 +1,373 @@
+@model List<IT_Gied.Models.CourseNodeVM>
+
+@{
+    ViewData["Title"] = "خارطة الطريق الأكاديمية";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/courses-roadmap.css" asp-append-version="true" />
+
+<div class="roadmap-container" dir="rtl">
+    <div class="roadmap-header">
+        <h2><i class="fas fa-project-diagram me-2"></i> خارطة الطريق الأكاديمية</h2>
+        <p>قم بتتبع تقدمك، أدخل علاماتك، وقيم المواد لمساعدة زملائك</p>
+    </div>
+
+    <div class="tree-legend">
+        <span class="legend-item"><span class="dot locked"></span> مغلقة</span>
+        <span class="legend-item"><span class="dot unlocked"></span> متاحة</span>
+        <span class="legend-item"><span class="dot completed"></span> منجزة</span>
+    </div>
+
+    <div class="roadmap-wrap">
+        <div id="nodes" class="nodes">
+            <svg id="edges" class="edges"></svg>
+
+            @foreach (var c in Model)
+            {
+                var stateClass = c.IsCompleted ? "completed" : (c.IsUnlocked ? "unlocked" : "locked");
+                var unlocksCsv = string.Join(",", c.Unlocks);
+
+                <div class="node @stateClass" data-id="@c.Id" data-unlocks="@unlocksCsv">
+                    <div class="node-header">
+                        <div class="header-badges">
+                            @if (c.AverageDifficulty > 0)
+                            {
+                                <span class="difficulty-badge" title="صعوبة المادة"><i class="fas fa-fire"></i> @c.AverageDifficulty.ToString("0.0")/10</span>
+                            }
+                        </div>
+                        <span class="code">@c.Code</span>
+                    </div>
+
+                    <div class="name" title="@c.Name">@c.Name</div>
+
+                    @if (c.IsCompleted)
+                    {
+                        <div class="grade-display">
+                            <span class="grade-label">العلامة:</span>
+                            <span class="grade-value">@(c.Grade?.ToString() ?? "--")</span>
+                        </div>
+                    }
+
+                    <div class="node-footer">
+                        <div class="secondary-actions">
+                            <a class="btn-icon btn-info" asp-controller="Courses" asp-action="Details" asp-route-id="@c.Id" title="التفاصيل">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <button class="btn-icon btn-rate @(c.IsCompleted ? "" : "d-none")" onclick="openRatingModal(@c.Id, '@c.Name')" title="تقييم">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+
+                        <form asp-controller="Courses" asp-action="ToggleComplete" method="post" class="done-form">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="courseId" value="@c.Id" />
+                            
+                            <div class="action-row">
+                                <div class="grade-wrapper @(c.IsCompleted ? "" : "d-none")">
+                                    <select name="grade" class="form-select form-select-sm auto-save-grade grade-select-custom">
+                                        <option value="">Grade</option>
+                                        <option value="A+" selected="@(c.Grade == "A+")">+A</option>
+                                        <option value="A" selected="@(c.Grade == "A")">A</option>
+                                        <option value="A-" selected="@(c.Grade == "A-")">-A</option>
+                                        <option value="B+" selected="@(c.Grade == "B+")">+B</option>
+                                        <option value="B" selected="@(c.Grade == "B")">B</option>
+                                        <option value="B-" selected="@(c.Grade == "B-")">-B</option>
+                                        <option value="C+" selected="@(c.Grade == "C+")">+C</option>
+                                        <option value="C" selected="@(c.Grade == "C")">C</option>
+                                        <option value="C-" selected="@(c.Grade == "C-")">-C</option>
+                                        <option value="D+" selected="@(c.Grade == "D+")">+D</option>
+                                        <option value="D" selected="@(c.Grade == "D")">D</option>
+                                        <option value="D-" selected="@(c.Grade == "D-")">-D</option>
+                                        <option value="F" selected="@(c.Grade == "F")">F</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn-main @(c.IsCompleted ? "btn-undo" : "btn-done")" type="submit" @(c.IsUnlocked ? "" : "disabled")>
+                                    <span>@(c.IsCompleted ? "إلغاء" : "إنجاز")</span>
+                                    <i class="fas @(c.IsCompleted ? "fa-times" : "fa-check") ms-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Rating Modal -->
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content glass-modal">
+            <form asp-action="AddRating" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="courseId" id="modalCourseId" />
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">تقييم مادة: <span id="modalCourseName"></span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="score" value="5" />
+
+                    <div class="text-center mb-4">
+                        <label class="form-label d-block fw-bold text-light mb-3">تقييم صعوبة المادة</label>
+                        <div class="d-flex justify-content-center gap-3 my-3">
+                            <button type="button" class="btn diff-btn btn-outline-success flex-grow-1 py-3 d-flex flex-column align-items-center justify-content-center" onclick="setDifficulty(3, this)" id="btn-easy" style="border-radius: 16px; border-width: 1px; transition: all 0.25s ease;">
+                                <i class="fas fa-smile fs-3 mb-2"></i>
+                                <span class="fw-bold">سهل</span>
+                            </button>
+                            <button type="button" class="btn diff-btn btn-outline-warning flex-grow-1 py-3 d-flex flex-column align-items-center justify-content-center" onclick="setDifficulty(6, this)" id="btn-medium" style="border-radius: 16px; border-width: 1px; transition: all 0.25s ease;">
+                                <i class="fas fa-meh fs-3 mb-2"></i>
+                                <span class="fw-bold">متوسط</span>
+                            </button>
+                            <button type="button" class="btn diff-btn btn-outline-danger flex-grow-1 py-3 d-flex flex-column align-items-center justify-content-center" onclick="setDifficulty(9, this)" id="btn-hard" style="border-radius: 16px; border-width: 1px; transition: all 0.25s ease;">
+                                <i class="fas fa-frown fs-3 mb-2"></i>
+                                <span class="fw-bold">صعب</span>
+                            </button>
+                        </div>
+                        <input type="hidden" name="difficulty" id="modalDifficulty" value="6" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-light-50">رأيك في المادة (اختياري)</label>
+                        <textarea name="comment" class="form-control" rows="3" placeholder="ما رأيك في صعوبة المادة ومحتواها؟"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal" style="border-radius: 12px;">إلغاء</button>
+                    <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-hover)); border: none;">حفظ التقييم</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/courses-roadmap.js" asp-append-version="true"></script>
+<script>
+    function setDifficulty(value, button) {
+        document.getElementById('modalDifficulty').value = value;
+        document.querySelectorAll('.diff-btn').forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.background = 'transparent';
+            btn.style.boxShadow = 'none';
+        });
+        button.classList.add('active');
+        if (value === 3) {
+            button.style.background = 'rgba(16, 185, 129, 0.15)';
+            button.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.3)';
+        } else if (value === 6) {
+            button.style.background = 'rgba(234, 179, 8, 0.15)';
+            button.style.boxShadow = '0 0 15px rgba(234, 179, 8, 0.3)';
+        } else if (value === 9) {
+            button.style.background = 'rgba(239, 68, 68, 0.15)';
+            button.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.3)';
+        }
+    }
+
+    function openRatingModal(id, name) {
+        document.getElementById('modalCourseId').value = id;
+        document.getElementById('modalCourseName').innerText = name;
+        
+        // Reset to Medium default
+        document.getElementById('modalDifficulty').value = 6;
+        document.querySelectorAll('.diff-btn').forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.background = 'transparent';
+            btn.style.boxShadow = 'none';
+        });
+        const medBtn = document.getElementById('btn-medium');
+        if (medBtn) {
+            medBtn.classList.add('active');
+            medBtn.style.background = 'rgba(234, 179, 8, 0.15)';
+            medBtn.style.boxShadow = '0 0 15px rgba(234, 179, 8, 0.3)';
+        }
+        
+        var modal = new bootstrap.Modal(document.getElementById('ratingModal'));
+        modal.show();
+    }
+</script>
+
+<style>
+    .glass-modal {
+        background: rgba(17, 24, 39, 0.85);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .glass-modal .form-control {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: white;
+        border-radius: 12px;
+    }
+    .glass-modal .form-control:focus {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary);
+        color: white;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+    .node-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: auto;
+    }
+
+    .secondary-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #cbd5e1;
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+    .btn-icon:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+    }
+
+    .btn-info:hover { color: #0ea5e9; border-color: rgba(14, 165, 233, 0.4); }
+    .btn-rate:hover { color: #eab308; border-color: rgba(234, 179, 8, 0.4); }
+
+    .action-row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .grade-wrapper .form-select {
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: rgba(255, 255, 255, 0.04);
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        padding: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: left 12px center;
+        background-size: 16px;
+    }
+
+    .grade-wrapper .form-select:hover {
+        border-color: var(--primary);
+        background-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    }
+
+    .grade-wrapper .form-select:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+
+    .grade-select-custom option {
+        font-weight: 600;
+        color: #ffffff;
+        padding: 10px;
+        background: #0f172a;
+    }
+
+    .btn-main {
+        width: 100%;
+        padding: 10px;
+        border-radius: 14px;
+        border: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .btn-done {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: white;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    }
+
+    .btn-undo {
+        background: rgba(239, 68, 68, 0.1);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-main:hover:not(:disabled) {
+        transform: translateY(-2px);
+        filter: brightness(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-main:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        filter: grayscale(1);
+    }
+
+    .grade-display {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 8px;
+        border-radius: 12px;
+        margin: 8px 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .grade-label { color: #94a3b8; font-size: 0.8rem; }
+    .grade-value { color: #ffffff; font-weight: 800; }
+
+    .rating-badge {
+        font-size: 0.8rem;
+        font-weight: 700;
+        background: rgba(234, 179, 8, 0.1);
+        color: #facc15;
+        border: 1px solid rgba(234, 179, 8, 0.2);
+        padding: 4px 8px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .difficulty-badge {
+        font-size: 0.8rem;
+        font-weight: 700;
+        background: rgba(239, 68, 68, 0.1);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        padding: 4px 8px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .done-form {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+

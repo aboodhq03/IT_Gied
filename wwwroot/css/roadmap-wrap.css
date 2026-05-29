@@ -1,0 +1,275 @@
+/* ========================================================
+   WEBDEV ROADMAP GLASSMORPHIC DARK THEME
+   ======================================================== */
+
+/* ===== Let Site Background Show Through ===== */
+
+/* Card variables updated to Dark Glassmorphism */
+:root {
+    /* Base */
+    --card-bg: rgba(17, 24, 39, 0.6);
+    --card-bg-strong: rgba(17, 24, 39, 0.8);
+    --text: #ffffff;
+    /* Borders / shadows */
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
+    /* Brand colors (Indigo + Green matching site theme) */
+    --blue-weak: rgba(99, 102, 241, 0.1);
+    --blue-border: rgba(99, 102, 241, 0.3);
+    --blue-text: #818cf8;
+    --green-weak: rgba(16, 185, 129, 0.1);
+    --green-border: rgba(16, 185, 129, 0.3);
+    --green-text: #34d399;
+    /* Neutral */
+    --gray-weak: rgba(255, 255, 255, 0.04);
+    --gray-border: rgba(255, 255, 255, 0.08);
+    /* Edges */
+    --edge: rgba(255, 255, 255, 0.25);
+    --edge-locked: rgba(255, 255, 255, 0.06);
+    --edge-done: rgba(16, 185, 129, 0.55);
+}
+
+.webdev-page .roadmap-wrap {
+    position: relative;
+    padding: 40px;
+    background: transparent !important;
+}
+
+.webdev-page .nodes {
+    position: relative;
+    min-height: 700px;
+    background: transparent !important;
+}
+
+/* SVG edges stays behind cards */
+.webdev-page .edges {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Node card styling with backdrop filtering */
+.webdev-page .node {
+    position: absolute; /* Keep absolute placement logic */
+    z-index: 2;
+    width: 220px;
+    padding: 18px 18px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease, opacity .25s ease;
+    user-select: none;
+    color: var(--text);
+}
+
+.webdev-page .node:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Code chip styling */
+.webdev-page .node .code {
+    display: inline-flex;
+    align-self: flex-start;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: .5px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--gray-weak);
+    color: #cbd5e1;
+}
+
+/* Title text */
+.webdev-page .node .name {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.35;
+    margin: 4px 0 8px;
+    color: #ffffff;
+}
+
+/* Buttons container */
+.webdev-page .node .btn-row {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+/* Done Button */
+.webdev-page .node .done-btn {
+    flex: 1;
+    width: auto;
+    margin-top: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: var(--gray-weak);
+    color: #ffffff;
+    transition: all .2s ease;
+}
+
+.webdev-page .node .done-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.webdev-page .node .done-btn:active {
+    transform: translateY(1px);
+}
+
+.webdev-page .node .done-btn:disabled {
+    cursor: not-allowed;
+    opacity: .35;
+}
+
+/* Details Button */
+.webdev-page .node .details-btn {
+    flex: 1;
+    width: auto;
+    margin-top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: 1px solid var(--gray-border);
+    background: rgba(255,255,255,0.02);
+    color: #cbd5e1;
+    transition: all .2s ease;
+}
+
+.webdev-page .node .details-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.webdev-page .node .details-btn:active {
+    transform: translateY(1px);
+}
+
+/* Disabled Details Link */
+.webdev-page .node .details-btn[aria-disabled="true"] {
+    opacity: .35;
+    pointer-events: none;
+}
+
+/* Active connection button */
+.webdev-page .node .link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 8px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: 700;
+    border: 1px solid var(--blue-border);
+    background: var(--blue-weak);
+    color: var(--blue-text);
+    transition: all 0.2s ease;
+}
+
+.webdev-page .node .link-btn:hover {
+    background: rgba(99, 102, 241, 0.18);
+    transform: translateY(-1px);
+}
+
+/* ========================================================
+   Node States
+   ======================================================== */
+
+/* Unlocked (Blue/Indigo glow) */
+.webdev-page .node.unlocked {
+    border-color: var(--blue-border);
+    background: rgba(99, 102, 241, 0.04);
+}
+
+.webdev-page .node.unlocked .code {
+    background: var(--blue-weak);
+    border-color: var(--blue-border);
+    color: var(--blue-text);
+}
+
+.webdev-page .node.unlocked .details-btn {
+    border-color: var(--blue-border);
+    background: rgba(99, 102, 241, 0.06);
+    color: var(--blue-text);
+}
+
+/* Completed (Green glow) */
+.webdev-page .node.completed {
+    border-color: var(--green-border);
+    background: rgba(16, 185, 129, 0.04);
+}
+
+.webdev-page .node.completed .code {
+    background: var(--green-weak);
+    border-color: var(--green-border);
+    color: var(--green-text);
+}
+
+.webdev-page .node.completed .done-btn {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: var(--green-border);
+    color: var(--green-text);
+}
+
+.webdev-page .node.completed .details-btn {
+    border-color: var(--green-border);
+    background: rgba(16, 185, 129, 0.06);
+    color: var(--green-text);
+}
+
+/* Locked (Dimmed Out) */
+.webdev-page .node.locked {
+    filter: grayscale(.65);
+    opacity: .40;
+}
+
+.webdev-page .node.locked .code {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ========================================================
+   Edges Style (Glowing connections)
+   ======================================================== */
+.webdev-page .edge {
+    stroke: var(--edge);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    opacity: 0.6;
+    transition: all 0.25s ease;
+}
+
+.webdev-page .edge.locked {
+    stroke-dasharray: 6 6;
+    stroke: var(--edge-locked);
+    opacity: 0.3;
+}
+
+.webdev-page .edge.done {
+    stroke: var(--edge-done);
+    stroke-width: 3.2;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.4));
+}

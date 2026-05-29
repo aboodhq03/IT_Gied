@@ -1,0 +1,197 @@
+@model IT_Gied.Models.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+    <!-- Header Section -->
+    <div class="glass-panel p-4 mb-5 reveal active">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-white text-dark mb-3 py-2 px-3 shadow-sm">Admin Dashboard</span>
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-user-shield gradient-text me-2"></i>
+                    <span class="gradient-text">Admin Dashboard</span>
+                </h1>
+                <p class="lead text-muted mb-2">
+                    Welcome to the high-level administration panel. Monitor system health and manage platform resources.
+                </p>
+                <p class="text-muted small opacity-75 mb-0">أهلاً بك في لوحة الإدارة. يمكنك مراقبة حالة النظام وإدارة موارد المنصة من هنا.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                <div class="dashboard-badge">
+                    <i class="fas fa-chart-line me-2"></i> Live Overview
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="row g-4 mb-5 pb-4">
+        <div class="col-md-3 col-sm-6 reveal">
+            <div class="stat-pill">
+                <div>
+                    <div class="text-muted small mb-1">Total Users | مستخدمون</div>
+                    <div class="stat-value gradient-text">@Model.TotalUsers</div>
+                </div>
+                <div class="mt-2 small text-success"><i class="fas fa-arrow-up me-1"></i> Active Platform</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 reveal">
+            <div class="stat-pill">
+                <div>
+                    <div class="text-muted small mb-1">Courses | مساقات</div>
+                    <div class="stat-value text-white">@Model.TotalCourses</div>
+                </div>
+                <div class="mt-2 small text-primary"><i class="fas fa-book me-1"></i> Knowledge Base</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 reveal">
+            <div class="stat-pill">
+                <div>
+                    <div class="text-muted small mb-1">Tracks | مسارات</div>
+                    <div class="stat-value text-white">@Model.TotalTracks</div>
+                </div>
+                <div class="mt-2 small text-info"><i class="fas fa-map-signs me-1"></i> Career Paths</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 reveal">
+            <div class="stat-pill">
+                <div>
+                    <div class="text-muted small mb-1">Student Benefits | عروض الطلبة</div>
+                    <div class="stat-value text-white">@Model.TotalStudentBenefits</div>
+                </div>
+                <div class="mt-2 small text-primary"><i class="fas fa-gift me-1"></i> Benefit Store</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 reveal">
+            <div class="stat-pill">
+                <div>
+                    <div class="text-muted small mb-1">AI Chats | استشارات</div>
+                    <div class="stat-value text-white">@Model.TotalAdvisorChats</div>
+                </div>
+                <div class="mt-2 small text-warning"><i class="fas fa-robot me-1"></i> AI Advisor</div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="opacity-10 mb-5">
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="admin-section-title">Management Hub</h2>
+            <p class="text-muted small mb-0">Quick access to core administration features for users, roles, and courses.</p>
+        </div>
+    </div>
+
+    <!-- Management Hub -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4 reveal">
+            <a asp-action="Users" class="hub-card">
+                <div class="hub-icon text-primary">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h4 class="text-white mb-3">User Management</h4>
+                <p class="text-muted small mb-0">
+                    View, audit, and manage registered users and their permissions.
+                    <br /><span class="opacity-50">إدارة المستخدمين والأذونات</span>
+                </p>
+            </a>
+        </div>
+        <div class="col-md-4 reveal">
+            <a asp-action="Roles" class="hub-card">
+                <div class="hub-icon text-success">
+                    <i class="fas fa-user-tag"></i>
+                </div>
+                <h4 class="text-white mb-3">Admin Access</h4>
+                <p class="text-muted small mb-0">
+                    Grant or revoke administrator rights for users.
+                    <br /><span class="opacity-50">إعطاء صلاحيات الأدمن فقط</span>
+                </p>
+            </a>
+        </div>
+        <div class="col-md-4 reveal">
+            <a asp-action="Courses" class="hub-card">
+                <div class="hub-icon text-info">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h4 class="text-white mb-3">Course Management</h4>
+                <p class="text-muted small mb-0">
+                    Update the academic roadmap and course prerequisites.
+                    <br /><span class="opacity-50">إدارة المساقات والمنهاج الدراسي</span>
+                </p>
+            </a>
+        </div>
+        <div class="col-md-4 reveal">
+            <a asp-action="StudentBenefits" class="hub-card">
+                <div class="hub-icon text-success">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h4 class="text-white mb-3">Student Benefits</h4>
+                <p class="text-muted small mb-0">
+                    Manage university email offers, discounts, and student tools.
+                    <br /><span class="opacity-50">إدارة عروض الطلبة</span>
+                </p>
+            </a>
+        </div>
+        <div class="col-md-4 reveal">
+            <div class="hub-card opacity-75" style="cursor: default;">
+                <div class="hub-icon text-secondary">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4 class="text-white mb-3">System Logs</h4>
+                <p class="text-muted small mb-0">
+                    Review security logs and system activities.
+                    <br /><span class="opacity-50">سجلات النظام (قريباً)</span>
+                </p>
+                <div class="mt-3">
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 reveal">
+            <div class="hub-card opacity-75" style="cursor: default;">
+                <div class="hub-icon text-danger">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h4 class="text-white mb-3">Maintenance</h4>
+                <p class="text-muted small mb-0">
+                    Database cleanup and system optimization tools.
+                    <br /><span class="opacity-50">أدوات الصيانة وقاعدة البيانات</span>
+                </p>
+                <div class="mt-3">
+                    <span class="badge bg-secondary">Admin Only</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 reveal">
+            <div class="hub-card opacity-75" style="cursor: default;">
+                <div class="hub-icon text-warning">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h4 class="text-white mb-3">Settings</h4>
+                <p class="text-muted small mb-0">
+                    Global application settings and AI configuration.
+                    <br /><span class="opacity-50">إعدادات النظام والذكاء الاصطناعي</span>
+                </p>
+                <div class="mt-3">
+                    <span class="badge bg-secondary">Config</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 100);
+            });
+        });
+    </script>
+}
